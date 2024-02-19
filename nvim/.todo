@@ -1,0 +1,18 @@
+┏┳┓┏━┓┳━┓┏━┓
+ ┃ ┃ ┃┃ ┃┃ ┃
+ ┻ ┗━┛┻━┛┗━┛
+mappings:
+[X] fun functs
+    [X] vsplit + terminal && close terminal
+    [X] select word under cursor + replace/search
+    [X] delete trailing spaces in line/file
+plugins:
+[X] cool status line
+[X] zenmode
+[_] lsp
+    [_] c error mesages (copiright, c cast in c wtf)
+    [X] multiple file mode
+[_] linter
+    [_] snips??
+[_] formater
+    [_] tab == 4 spaces

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ -z "$1" ] && echo "bfind: needs a file" 1>&2 && exit 1
+
+FILE="$1"
+HOOK="$(pwd)"
+
+find "$HOOK" -maxdepth 1 -name "$FILE"
+
+while [ "$HOOK" != "/" ] ; do
+    HOOK="$(dirname "$HOOK")"
+    find "$HOOK" -maxdepth 1 -name "$FILE"
+done
+

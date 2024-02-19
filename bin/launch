@@ -1,0 +1,13 @@
+#!/bin/bash
+
+VERBOSE="F"
+CLOSE_TERMINAL="F"
+MESAGE=""
+
+if [ "$VERBOSE" = "T" ]; then
+    "$@" &> /dev/null & echo -n "$MESAGE"
+else
+    "$@" &> /dev/null & true 
+fi
+
+[ "$CLOSE_TERMINAL" = "T" ] && kill -9 "$PPID"
