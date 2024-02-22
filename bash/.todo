@@ -7,3 +7,9 @@ X_:
 [X] l_
 .bashrc:
 [X] clean
+[_] colors
+.bash_aliases:
+[_] merge aliases and g_ n_ funtions
+    [_] check if new aliases abaible and generate and source file
+bin:
+[_] move bin basic functs to aliases, or functs in .bash_functions
