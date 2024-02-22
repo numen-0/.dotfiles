@@ -1,0 +1,11 @@
+#!/bin/bash
+TODO_FILE="$(bfind .todo | head -n 1)"
+
+superp_print ()
+{
+    echo -e "$(sed "s/\s\+$//;/^\s*$/d;s|^.|\\\033[0;1m&|;s|\[X\]|  \\\033[0;2;9m|;s|\[_\]|  \\\033[0m|;s|$| |" "$1")"
+}
+
+[ -f "$TODO_FILE" ] && superp_print "$TODO_FILE" && exit 0
+echo "todo: .todo file not found" 1>&2 && exit 1
+
