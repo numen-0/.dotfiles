@@ -54,39 +54,8 @@ end
 
 require("zenmode").toggleZenMode()
 require("statusline").reload()
+require("magic_macro")
+vim.api.nvim_set_keymap("v", "<leader>M", ":lua Magic.do_the_magic()<CR>", {})
+-- vim.keymap.set("v", "<leader>M", magic.do_the_magic, {})
+-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-
---============================================================================--
--- function Foo()
--- end
--- function GetDiagnostics()
---     local bufnr = vim.api.nvim_get_current_buf()
---     local diagnostics = vim.diagnostic.get(bufnr)
---     for index, data in ipairs(diagnostics) do
---         print(index)
---         for key, value in pairs(data) do
---             print('  ', key, value)
---         end
---     end
--- end
--- local function filter_diagnostics(diagnostic)
---     return diagnostic.severity ~= vim.lsp.protocol.DiagnosticSeverity.Hint
---             and diagnostic.severity ~= vim.lsp.protocol.DiagnosticSeverity.Information
--- end
--- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
---   function(_, result, ctx, config)
---         local arr = {}
---         local len = 0
---         for i, diagnostic in ipairs(result.diagnostics) do
---             if filter_diagnostics(diagnostic) then
---                 len = len + 1
---                 arr[len] = i
---             end
---         end
---         for i = len, 1, -1 do
---             table.remove(result.diagnostics, arr[i])
---         end
---         vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
---   end,
---   {}
--- )

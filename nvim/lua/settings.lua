@@ -69,6 +69,7 @@ vim.cmd("set path+=**")
 --------------------------------------------------------------------------------
 -- MAPPINGS --------------------------------------------------------------------
 --------------------------------------------------------------------------------
+map("n", "<leader>SS", ":source %<CR>")
 -- easy split generation
 map("n", "<leader>v", ":vsplit<CR>")              -- space+v creates a veritcal split
 map("n", "<leader>s", ":split<CR>")               -- space+s creates a horizontal split
@@ -110,6 +111,8 @@ map("n", "<leader>h", ":set hlsearch!<CR>") -- togle highligh
 -- text editing
 vim.keymap.set({ "v", "n" }, "<leader>s", ":s/\\s\\+$//e<CR>:set hlsearch<CR>:set hlsearch!<CR>") --  delete trailing spaces
 vim.keymap.set("n", "<leader>;", ":s/\\%(;$\\)\\@!\\(.\\)$/\\1;/e<CR>:set hlsearch<CR>:set hlsearch!<CR>") --  delete trailing spaces
+map("n", "<leader>f", [[/\<<C-r><C-w>\>]])                                                        -- FInd all instance of word under cursor
+map("v", "<leader>f", '"hy/<C-r>h')                                                               -- Find all instance of highlighted words
 map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])                     -- Replace all instance of word under cursor
 map("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>')                                             -- Replace all instance of highlighted words
 map("v", '<leader>w"', 'c"<ESC>pa"<ESC>')                                                         -- wrap word ""
@@ -144,7 +147,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

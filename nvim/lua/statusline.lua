@@ -66,19 +66,19 @@ local function lsp()
 	local info = ""
 
 	if count["errors"] ~= 0 then
-		errors = "%#LspDiagnosticsSignError#\\ " .. count["errors"]
+		errors = "\\ %#LspDiagnosticsSignError#\\ " .. count["errors"]
 	end
 	if count["warnings"] ~= 0 then
-		warnings = "%#LspDiagnosticsSignWarning#\\ " .. count["warnings"]
+		warnings = "\\ %#LspDiagnosticsSignWarning#\\ " .. count["warnings"]
 	end
 	if count["hints"] ~= 0 then
-		hints = "%#LspDiagnosticsSignHint#\\ " .. count["hints"]
+		hints = "\\ %#LspDiagnosticsSignHint#\\ " .. count["hints"]
 	end
 	if count["info"] ~= 0 then
-		info = "%#LspDiagnosticsSignInformation#\\ " .. count["info"]
+		info = "\\ %#LspDiagnosticsSignInformation#\\ " .. count["info"]
 	end
 
-	return "\\ \\ " .. errors .. warnings .. hints .. info .. "%#Normal#"
+	return "\\ " .. errors .. warnings .. hints .. info .. "%#Normal#"
 end
 local function lineinfo()
 	if vim.bo.filetype == "alpha" then
@@ -92,7 +92,7 @@ local function filemodified()
 	if changed == "1" then
 		return "%#StatusBold#\\ \\ "
 	end
-	return ""
+	return "\\ "
 end
 Statusline = {}
 
