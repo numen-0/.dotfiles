@@ -24,6 +24,6 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle right<CR>", {})
+        require("mappings").map("n", "<C-n>", ":Neotree filesystem toggle right<CR>")
 	end,
 }

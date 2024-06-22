@@ -1,76 +1,84 @@
 return {
-	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
-	dependencies = {
-		"neovim/nvim-lspconfig",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    lazy = false,
+    event = "InsertEnter",
+    dependencies = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "neovim/nvim-lspconfig",
 
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
 
-		"rafamadriz/friendly-snippets",
-		"onsails/lspkind.nvim",
-	},
-	config = function()
-		local cmp = require("cmp")
-		local lspkind = require("lspkind")
+        "onsails/lspkind.nvim",
+    },
+    config = function()
+        vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
+        local cmp = require("cmp")
+        local lspkind = require("lspkind")
         local luasnip = require("luasnip")
 
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body) -- For `luasnip` users.
-				end,
-			},
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_prev_item(),
-				["<C-p>"] = cmp.mapping.select_next_item(),
-				["<C-u>"] = cmp.mapping.scroll_docs(-4),
-				["<C-d>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			}),
-			sources = cmp.config.sources({
-				{ name = "luasnip" },
-				{ name = "nvim_lua" },
-				{ name = "nvim_lsp" },
-				-- { name = "orgmode" },
-			}, {
-				{ name = "buffer" },
-				{ name = "path" },
-			}),
-            format = lspkind.cmp_format({
-                with_text = true,
-                menu = {
-                    buffer      = "[buff]",
-                    nvim_lsp    = "[lsp]",
-                    nvim_lua    = "[api]",
-                    path        = "[path]",
-                    luasnip     = "[snip]",
-                },
+        cmp.setup({
+            sources = cmp.config.sources({
+                { name = "nvim_lua" },
+                { name = "luasnip" },
+                { name = "nvim_lsp" },
+                { name = "buffer" },
+                { name = "path" },
             }),
-		})
+            mapping = cmp.mapping.preset.insert({
+                ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Inset }),
+                ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Inset }),
+                ["<C-e>"] = cmp.mapping.abort(),
+                ["<C-y>"] = cmp.mapping(
+                    cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true,
+                    }), { "i", "c" }
+                ),
+            }),
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
+            window = {
+                completion    = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
+            formatting = {
+                format = lspkind.cmp_format({
+                    mode = "symbol",
+                    show_labelDetails = true,
+                    menu = {
+                        buffer   = "[buff]",
+                        nvim_lsp = "[lsp]",
+                        nvim_lua = "[api]",
+                        path     = "[path]",
+                        luasnip  = "[snip]",
+                    },
+                }),
+            },
+            experimental = {
+                ghost_text = true,
+            }
+        })
 
-		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
-				{ name = "cmdline" },
-			}),
-		})
+        cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = "path" },
+            }, {
+                { name = "cmdline" },
+            }),
+        })
         cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = buffer },
+                { name = "buffer" },
             }
         })
 
@@ -80,5 +88,5 @@ return {
         lspconfig["clangd"].setup({
             capabilities = capabilities
         })
-	end,
+    end,
 }

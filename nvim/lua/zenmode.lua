@@ -1,30 +1,27 @@
--- zen mode
-ZenMode = { }
+ZenMode = {}
 ZenMode.__index = ZenMode
 local zm = false
 
-function ZenMode.getZM()
-    return zm
-end
+function ZenMode.getZM() return zm end
 
-function ZenMode.toggleZenMode()
+function ZenMode.toggle()
     zm = not zm
-    vim.cmd("set nonu!")
-    vim.cmd("set rnu!")
     if zm then
         vim.cmd("set signcolumn=no")
         vim.cmd("set colorcolumn=-1")
-        vim.diagnostic.disable()
+        vim.cmd("set nonumber")
+        vim.cmd("set norelativenumber")
+        vim.diagnostic.hide()
     else
         vim.cmd("set signcolumn=yes")
         vim.cmd("set colorcolumn=80")
-        vim.diagnostic.enable()
+        vim.cmd("set number")
+        vim.cmd("set relativenumber")
+        vim.diagnostic.show()
     end
     require("statusline").reload()
 end
 
--- KeyMap
-vim.api.nvim_set_keymap("n", "<Leader>zm", ":lua ZenMode.toggleZenMode()<CR>", { noremap = true })
+require("mappings").map2("n", "<leader>zm", ZenMode.toggle, { noremap = true })
 
 return ZenMode
-
