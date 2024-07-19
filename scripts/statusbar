@@ -1,0 +1,186 @@
+#!/bin/sh
+# sources:
+#     https://lecorbeausvault.wordpress.com/2020/09/28/statusbar-sh-simple-shell-script-for-dwms-bar/
+#     https://www.reddit.com/r/archlinux/comments/k7ynny/dwm_status_bar_script_for_only_displaying_battery/
+
+prev="-1"
+bat_state=""
+battery() {
+    cap="$(cat "/sys/class/power_supply/BAT0/capacity")"
+    state="$(cat "/sys/class/power_supply/BAT0/status")"
+
+    if [ "$prev" = "$cap" ] && [ "$bat_state" = "$state" ]; then
+        echo "$BATTERY_STR"
+        return;
+    fi
+    prev="$cap"
+    bat_state="$state"
+
+    if [ "$state" = "Charging" ]; then
+        [ "$BRIGHTNESS" = "low" ] && sudo brightness norm && BRIGHTNESS="norm"
+        [ "$cap" = 100 ] && herbe "󰁹 full battery" "$cap%" &
+
+        BATTERY_STR="󰂄 $cap%"
+    elif [ "$cap" -ge 90 ]; then
+        BATTERY_STR="󰁹 $cap%"
+    elif [ "$cap" -ge 70 ]; then
+        BATTERY_STR="󰂀 $cap%"
+    elif [ "$cap" -ge 50 ]; then
+        BATTERY_STR="󰁾 $cap%"
+    elif [ "$cap" -ge 20 ]; then
+        BATTERY_STR="󰁻 $cap%"
+    else
+        [ "$BRIGHTNESS" = "norm" ] && sudo brightness low && BRIGHTNESS="low"
+
+        herbe "󰂃 low battery" "$cap%" &
+        BATTERY_STR="󰂃 $cap%"
+    fi
+    echo "$BATTERY_STR"
+}
+
+usbmon() {
+	usb1=$(lsblk -la | awk '/sdc1/ { print $1 }')
+	usb1mounted=$(lsblk -la | awk '/sdc1/ { print $7 }')
+
+	if [ "$usb1" ]; then
+		if [ -z "$usb1mounted" ]; then
+			echo " |"
+		else
+			echo " $usb1 |"
+		fi
+	fi
+}
+
+fsmon() {
+	ROOTPART=$(df -h | awk '/\/$/ { print $3}') 
+	HOMEPART=$(df -h | awk '/\/home/ { print $3}') 
+	SWAPPART="$(awk '/\// { print $4 }' /proc/swaps)"
+
+	echo "   $ROOTPART    $HOMEPART    $SWAPPART"
+}
+
+ram() {
+    mem="$(free -h --giga | awk '/Mem:/ { print $3 "/" $4 }')"
+	echo "  $mem"
+}
+
+read -r cpu a b c previdle rest < /proc/stat
+prevtotal=$((a+b+c+previdle))
+cpu() {
+	read -r cpu a b c idle rest < /proc/stat
+	total=$((a+b+c+idle))
+	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+    prevtotal=total
+    previdle=idle
+	echo "  ${cpu}%"
+}
+
+network() {
+	conntype=$(ip route | awk '/default/ { print substr($5,1,1) }')
+
+	if [ -z "$conntype" ]; then
+		echo "󰤯 "
+	elif [ "$conntype" = "e" ]; then
+		echo " "
+	elif [ "$conntype" = "w" ]; then
+		echo "󰤨 "
+	fi
+}
+
+volume_pa() {
+	muted=$(pactl list sinks | awk '/Mute:/ { print $2 }')
+	vol=$(pactl list sinks | grep Volume: | awk 'FNR == 1 { print $5 }' | cut -f1 -d '%')
+
+	if [ "$muted" = "yes" ]; then
+		echo "󰝟"
+	else
+		if [ "$vol" -ge 65 ]; then
+			echo "  $vol%"
+		elif [ "$vol" -ge 40 ]; then
+			echo "  $vol%"
+		elif [ "$vol" -ge 0 ]; then
+			echo "  $vol%"	
+		fi
+	fi
+
+}
+
+volume_alsa() {
+	mono=$(amixer -M sget Master | grep Mono: | awk '{ print $2 }')
+
+	if [ -z "$mono" ]; then
+		muted=$(amixer -M sget Master | awk 'FNR == 6 { print $6 }' | sed 's/[][]//g')
+		vol=$(amixer -M sget Master | awk 'FNR == 6 { print $5 }' | sed 's/[][]//g; s/%//g')
+	else
+		muted=$(amixer -M sget Master | awk 'FNR == 6 { print $6 }' | sed 's/[][]//g')
+		vol=$(amixer -M sget Master | awk 'FNR == 6 { print $5 }' | sed 's/[][]//g; s/%//g')
+	fi
+
+	if [ "$muted" = "off" ]; then
+		echo "󰝟"
+	else
+		if [ "$vol" -ge 65 ]; then
+			echo "  $vol%"
+		elif [ "$vol" -ge 40 ]; then
+			echo "  $vol%"
+		elif [ "$vol" -ge 0 ]; then
+			echo "  $vol%"	
+		fi
+	fi
+}
+
+backlight() {
+    BRIGHTNESS_DIR="/sys/class/backlight/intel_backlight"
+    max="$(cat "$BRIGHTNESS_DIR/max_brightness")"
+    brightness="$(cat "$BRIGHTNESS_DIR/brightness")"
+
+    echo "󰃠  $((brightness * 100 / max))%"
+}
+
+day() {
+    date +"%a, %d %b."
+}
+
+clock() {
+	# dte=$(date +"%D")
+	# time=$(date +"%H:%M")
+
+	# echo " $dte  $time"
+	date +"%H:%M"
+}
+
+###############################################################################
+VOLUME_STR=""
+BRIGHTNESS_STR=""
+BATTERY_STR=""
+
+update() {
+    xsetroot -name " $(clock) ; $(ram) | $(cpu) | $(network) | $BRIGHTNESS_STR | $VOLUME_STR | $(battery) | $(day) "
+}
+volumen_change() {
+    VOLUME_STR="$(volume_alsa)"
+}
+brightness_change() {
+    BRIGHTNESS_STR="$(backlight)"
+}
+trap 'volumen_change'    USR1
+trap 'brightness_change' USR2
+
+main() {
+	while true; do
+        update
+		sleep 60 &
+        wait $!
+	done
+}
+
+###############################################################################
+
+[ "$(cat "/sys/class/power_supply/BAT0/capacity")" -ge 20 ] && \
+    BRIGHTNESS="norm" || BRIGHTNESS="low"
+sudo brightness "$BRIGHTNESS"
+
+volumen_change
+# brightness_change
+main
+

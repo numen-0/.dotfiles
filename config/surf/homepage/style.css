@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'MapleMono';
+    src:url("./MapleMono.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #080808;
+    color: #eeeeee;
+    font-family: 'MapleMono', monospace;
+}
+
+#clock {
+    font-size: calc((2rem + .4vw + .2vh) * 3);
+    font-style: bold;
+    text-align: center;
+}
+p {
+    font-size: calc((2rem + .4vw + .2vh)*2/3);
+    font-style: normal;
+} 
+
+.unselectable {
+    user-select:         none; /* Standard   */
+    -webkit-user-select: none; /* Safari     */
+    -moz-user-select:    none; /* Firefox    */
+    -ms-user-select:     none; /* IE10+/Edge */
+                         
+    user-drag:           none; /* Standard   */
+    -webkit-user-drag:   none; /* WebKit     */
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 70%; */
+    width: calc((2rem + .4vw + .2vh) * 22);
+}
+
+.searchbar input[type=text] {
+    background-color: #111111;
+    color: #eeeeee;
+    caret-color: #808080;
+    width: 100%;
+    padding-left:  1.25rem;
+    padding-right: 1.25rem;
+    padding-top:   0.25rem;
+    padding-bottom:   0.25rem;
+    border: none;
+    margin-bottom: 8px;
+    font-family: 'MapleMono', monospace;
+    font-size: calc(2rem + .4vw + .2vh);
+}
+.searchbar input[type=text]::placeholder {
+    color: #333333;
+}
+.searchbar input[type=text]:focus {
+    outline: none;
+    border: none;
+    /* background-color: #202020; */
+}
+
+.mmenu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    width: 60%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu .box {
+    padding: 0px;
+    margin: 0px;
+    height: calc(11rem + 3vw);
+    width:  calc(11rem + 3vw);
+    /* background-color: #111111; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+.menu .box:hover {
+    background-color: #202020;
+    opacity: 1;
+}
+
+.box img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    filter:    brightness(0%) saturate(0%) invert(100%);
+}
+

@@ -1,0 +1,102 @@
+#
+# ~/.bashrc
+#
+# source(s):
+#   https://gitlab.com/dwt1/dotfiles/-/blob/master/.bashrc
+#
+
+# If not running interactively, don't do anything
+case "$-" in
+  *i*) ;;
+  *) return ;;
+esac
+
+###############################################################################
+## path #######################################################################
+[ -d "$HOME/.local/bin" ]     && PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/.local/scripts" ] && PATH="$HOME/.local/scripts:$PATH"
+
+[ -f "$HOME/.config/bash/bash_functions" ] \
+    && . "$HOME/.config/bash/bash_functions"
+[ -f "$HOME/.config/bash/bash_aliases" ]   \
+    && . "$HOME/.config/bash/bash_aliases"
+[ -f "$HOME/.config/bash/bash_shortcuts" ] \
+    && . "$HOME/.config/bash/bash_shortcuts"
+
+###############################################################################
+## config #####################################################################
+# export
+export EDITOR="nvim"
+export BROWSER="firefox"
+
+# color
+[ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GREP_COLORS='ms=2;37'
+
+if [ -n "$BASH_VERSION" ]; then
+    # completion
+    complete -cf man sudo which tldr
+    [ "$PS1" ] && [ -f "/usr/share/bash-completion/bash_completion" ] && \
+        . /usr/share/bash-completion/bash_completion
+
+    # shopt
+    shopt -s autocd                # quick cd
+    shopt -s cdspell               # autocorrect misspelings
+    shopt -s checkwinsize          # check the window size (default)
+    shopt -s cmdhist               # compact command into 1 line to save in hist
+    shopt -s complete_fullquote    # quote stuff (default, bash +4.2v)
+    shopt -s dotglob               # include '.dotfiles' in glob expansion
+    shopt -s expand_aliases        # expand aliases (default)
+    shopt -s extglob               # extend pattern matching
+    shopt -s extquote              # $'str' & $"str" -> ${str} (default)
+    shopt -s force_fignore         # ignore matches with suffixes in $fignore (default)
+    shopt -s globasciiranges       # when expanding [a-d] -> [abcd]
+    shopt -s globskipdots          # dont match '.' and '..' pathnames
+    shopt -s histappend            # dont overwrite history
+    shopt -s interactive_comments  # treat comments (#) as comments (default)
+    shopt -s patsub_replacement    # (default)
+    shopt -s progcomp              # catch replaced string ${str/match/&.txt} (default)
+    shopt -s promptvars            # 'eval' promt (default)
+    shopt -s sourcepath            # use path to find commands (default)
+fi
+
+# set
+# set -o vi
+# set -o verbose
+
+# bind
+bind "set completion-ignore-case on"
+
+# hist
+HISTCONTROL="erasedups:ignoreboth"
+HISTSIZE=2000
+HISTFILESIZE=2000
+
+# $home clean
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.local/cache"
+
+alias xbindkeys='xbindkeys -f $XDG_CONFIG_HOME/xbindkeys/config'
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+alias wget='wget --hsts-file $XDG_DATA_HOME/.wget-hsts'
+export HISTFILE="$HOME/.config/bash/bash_history"
+export LESSHISTFILE="/dev/null"
+# export YDOTOOL_SOCKET="/tmp/.ydotool_socket"
+
+# PS1 && term_name from ~/.config/bash/.bash_functions
+# PS1='\[\e[0;92m\] \[\e[0m\]'
+toggle
+change_term_name "(⌐■_■)"
+
+# unset stuff
+unset -f change_term_name
+
+# hello
+echo "( ·_·)b"
+

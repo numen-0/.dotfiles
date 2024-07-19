@@ -1,0 +1,37 @@
+#!/bin/sh
+
+BRIGHTNESS_DIR="/sys/class/backlight/intel_backlight"
+MAX_BRIGHTNESS_FILE="$BRIGHTNESS_DIR/max_brightness"
+BRIGHTNESS_FILE="$BRIGHTNESS_DIR/brightness"
+MAX_BRIGHTNESS="$(cat "$MAX_BRIGHTNESS_FILE")"
+BRIGHTNESS="$(cat "$BRIGHTNESS_FILE")"
+NORM_B="80"
+LOW_B="60"
+
+if [ "$1" = "up" ]; then
+    step="$((MAX_BRIGHTNESS / 20))"
+    BRIGHTNESS="$((BRIGHTNESS + step))"
+    
+    [ "$BRIGHTNESS" -gt "$MAX_BRIGHTNESS" ] && BRIGHTNESS="$MAX_BRIGHTNESS"
+
+elif [ "$1" = "down" ]; then
+    step="$((MAX_BRIGHTNESS / 20))"
+    BRIGHTNESS="$((BRIGHTNESS - step))"
+    
+    [ "$BRIGHTNESS" -lt 0 ] && BRIGHTNESS="0"
+elif [ "$1" = "norm" ]; then
+    BRIGHTNESS="$((MAX_BRIGHTNESS * NORM_B / 100))"
+elif [ "$1" = "low" ]; then
+    BRIGHTNESS="$((MAX_BRIGHTNESS * LOW_B / 100))"
+else
+    echo "$(basename "$0") up   |> +5% brightness"
+    echo "$(basename "$0") down |> -5% brightness"
+    echo "$(basename "$0") norm |> ${NORM_B}% brightness"
+    echo "$(basename "$0") low  |> ${LOW_B}% brightness"
+    exit
+fi
+
+echo "$BRIGHTNESS" > "$BRIGHTNESS_FILE"
+
+pkill -USR2 -f "statusbar"
+

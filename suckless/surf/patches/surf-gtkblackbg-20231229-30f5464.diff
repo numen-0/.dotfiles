@@ -1,0 +1,39 @@
+From 45401ba76aa0157d49cba61dbc42ddc03d675796 Mon Sep 17 00:00:00 2001
+From: Scarlett McAllister <no+reply@roygbyte.com>
+Date: Fri, 29 Dec 2023 12:41:32 -0400
+Subject: [PATCH] Add black bg to gtk window and make it visible through webkit
+ view
+
+---
+ config.def.h | 2 +-
+ surf.c       | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index 93cfeeb..ba68287 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -29,7 +29,7 @@ static Parameter defconfig[ParameterLast] = {
+ 	[FontSize]            =       { { .i = 12 },    },
+ 	[FrameFlattening]     =       { { .i = 0 },     },
+ 	[Geolocation]         =       { { .i = 0 },     },
+-	[HideBackground]      =       { { .i = 0 },     },
++	[HideBackground]      =       { { .i = 1 },     },
+ 	[Inspector]           =       { { .i = 0 },     },
+ 	[Java]                =       { { .i = 1 },     },
+ 	[JavaScript]          =       { { .i = 1 },     },
+diff --git a/surf.c b/surf.c
+index f8c8dec..a6cb224 100644
+--- a/surf.c
++++ b/surf.c
+@@ -1461,6 +1461,7 @@ createwindow(Client *c)
+ 	g_signal_connect(G_OBJECT(w), "window-state-event",
+ 	                 G_CALLBACK(winevent), c);
+ 
++	gtk_widget_modify_bg(GTK_WINDOW(w), GTK_STATE_NORMAL, &(GdkColor){0});
+ 	return w;
+ }
+ 
+-- 
+2.42.0
+

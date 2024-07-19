@@ -1,0 +1,603 @@
+scrot --file "./tmp.png" --silent
+scrot --file "./tmp.png"
+scrot --file "./tmp2.png"
+rm tmp.png 
+rm tmp_000.png 
+rm tmp2.png 
+date +"%Y-%m-%d_%H:%M:%S"
+rm *
+..
+nvim bookmarks.txt 
+cp config.h config.tmp.h 
+cp config.h config.def.h 
+cp config.h config.tmp.h 
+cp config.h config.def.h 
+mv icons8-github.svg ~/.config/surf/homepage/img/github.svg
+cd homepage/
+nvim index.html 
+nvim homepage/style.css 
+cd
+nvim styles/default.css 
+cd -
+sudo pacman -Sy checkbashisms
+checkbashisms *
+nvim template 
+checkbashisms template 
+checkbashisms -x template 
+checkbashisms -xp template 
+man checkbashisms 
+checkbashisms -xpn template 
+ls -l | cut -d ' ' -f 4
+ls -l | cut -d ' ' -f 6
+ls -l | cut -d ' +' -f 9
+ls -l | cut -d ' ' -f 9
+nvim bacup 
+checkbashisms -xpn bacup 
+nvim bfind 
+checkbashisms -xpn bfind 
+checkbashisms -xpnf bfind 
+fg
+./brightness
+sh ./brightness
+sh ./brightness low
+checkbashisms -xpnf launch 
+man pkill
+checkbashisms -xpnf brightness 
+nvim brightness 
+checkbashisms -xpnf powermenu 
+checkbashisms -xpnf screenshot 
+nvim *
+checkbashisms -xpnf *
+_
+ls -l
+checkbashisms -xpnf bfind brightness launch 
+checkbashisms -xpnf powermenu screenshot statusbar 
+checkbashisms -xpnf template todo volume 
+checkbashisms -xpnf statusbar 
+nvim statusbar 
+printf "%s" "hi\nf"
+man printf
+grep "print" $(ls)
+printf "%b" "hi\nf"
+nvim powermenu
+nvim launch 
+nvim powermenu 
+printf "%b" "hi\nf" | wc -l
+printf "%b\n" "hi\nf" | wc -l
+nvim powermenu launch 
+herbe "f
+"
+g_
+ls
+nvim config.h
+sudo make clean install
+herbe "HELLO" "fuck"
+echo "⡤"
+echo "�▟"
+echo "�"▟"
+╔════╗         ╔╗     ╔═══╗  ╔╗   ╔╗ 
+║╔╗╔╗║        ╔╝╚╗    ║╔══╝  ║║  ╔╝╚╗
+╚╝║║╚╝╔══╗╔╗╔╗╚╗╔╝    ║╚══╗╔═╝║╔╗╚╗╔╝
+nvim tmp
+g:
+g_
+ls
+nvim bacup 
+nvim bacup 
+g_
+ls
+cd cache/
+pwd
+nvim bookmarks.txt 
+cp config.h config.tmp.h 
+cp config.h config.def.h 
+cp config.h config.tmp.h 
+cp config.h config.def.h 
+mv icons8-github.svg ~/.config/surf/homepage/img/github.svg
+cd homepage/
+nvim index.html 
+nvim homepage/style.css 
+cd
+nvim styles/default.css 
+cd -
+sudo pacman -Sy checkbashisms
+checkbashisms *
+nvim template 
+checkbashisms template 
+checkbashisms -x template 
+checkbashisms -xp template 
+man checkbashisms 
+checkbashisms -xpn template 
+ls -l | cut -d ' ' -f 4
+ls -l | cut -d ' ' -f 6
+ls -l | cut -d ' +' -f 9
+ls -l | cut -d ' ' -f 9
+nvim bacup 
+checkbashisms -xpn bacup 
+nvim bfind 
+checkbashisms -xpn bfind 
+checkbashisms -xpnf bfind 
+./brightness
+sh ./brightness
+sh ./brightness low
+checkbashisms -xpnf launch 
+man pkill
+checkbashisms -xpnf brightness 
+nvim brightness 
+checkbashisms -xpnf powermenu 
+checkbashisms -xpnf screenshot 
+nvim *
+checkbashisms -xpnf *
+_
+checkbashisms -xpnf bfind brightness launch 
+checkbashisms -xpnf powermenu screenshot statusbar 
+checkbashisms -xpnf template todo volume 
+checkbashisms -xpnf statusbar 
+nvim statusbar 
+printf "%s" "hi\nf"
+man printf
+grep "print" $(ls)
+printf "%b" "hi\nf"
+nvim powermenu
+nvim launch 
+nvim powermenu 
+printf "%b" "hi\nf" | wc -l
+printf "%b\n" "hi\nf" | wc -l
+nvim powermenu launch 
+herbe "f
+"
+nvim config.h
+sudo make clean install
+herbe "HELLO" "fuck"
+echo "⡤"
+echo "�▟"
+echo "�"▟"
+╔════╗         ╔╗     ╔═══╗  ╔╗   ╔╗ 
+║╔╗╔╗║        ╔╝╚╗    ║╔══╝  ║║  ╔╝╚╗
+╚╝║║╚╝╔══╗╔╗╔╗╚╗╔╝    ║╚══╗╔═╝║╔╗╚╗╔╝
+nvim tmp
+g_
+du -csh
+nvim .gitignore 
+ls nvim/nvim/
+ls 
+ls bin
+rm -d bin/
+ls config/
+ls config/X11
+tree config/
+ls config/surf/
+ls
+ls -l
+fg
+ls bash/
+nvim update_links 
+nvim exclude.txt 
+./update_links 
+tree
+git status
+g_
+ls
+nvim config.h
+sudo make clean install
+herbe "hi"
+ls
+xporp
+xprop 
+g_
+ls
+nvim .bash_functions 
+ls
+rm .fehbg 
+g_
+ls
+g_
+ls
+nvim 
+nvim 
+ls
+g_
+nvim bacup 
+xprop 
+nvim .bash_functions 
+rm .fehbg 
+nvim 
+g_
+ls
+nvim config.h
+sudo make clean install
+statusbar 
+git status
+nvim config.h
+sudo make clean install
+herbe "hi"
+xporp
+xprop 
+nvim .bash_functions 
+rm .fehbg 
+nvim
+..
+cd picom/
+nvim picom.conf 
+g_
+nvim statusbar 
+:q
+ls
+sad
+ls config/surf/
+ls -l
+fg
+ls bash/
+nvim update_links 
+nvim exclude.txt 
+./update_links 
+tree
+git status
+nvim config.h
+sudo make clean install
+herbe "hi"
+xporp
+xprop 
+feh purple-aesthetic-3840x2160-17517.jpg 
+feh --bg-fill lake-mountains-rocks-sunrise-daylight-scenery-illustration-3840x2160-3773.jpg 
+feh --bg-fill macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg 
+feh --bg-fill purple-aesthetic-3840x2160-17517.jpg 
+feh --bg-fill vibrant-landscape-3840x2160-17436.jpg 
+xprop
+feh --bg-fill wp9083282-3829286243.jpg 
+rm *.jpg
+feh --bg-fill leaves-blue-3840x2160-17461.jpeg 
+rm leaves-blue-3840x2160-17461.jpeg red-trees-during-autumn-a70g8trt2pb9zh0m.webp red-abstract-lines-7xzx26h4bcp5c6z7.webp 
+..
+feh --bg-fill roses.jpg 
+feh --bg-fill 28xce59k82951-863681177.png 
+rm roses.jpg 
+mv 28xce59k82951-863681177.png wall/orange.png
+g_
+cd
+cd .config/X11/
+ls
+nvim xinitrc 
+mv 28xce59k82951-863681177.png wall/orange.png
+cd
+cd .config/X11/
+nvim xinitrc 
+rm .fehbg 
+g_
+cd wall/
+alias
+alias | grep "feh"
+ls
+peek *
+nvim xinitrc 
+ls
+cd wall/
+rm mountain.jpg 
+rm moon.png cool_blue.png cool_dark.png cool_place.png 
+cd
+cd .config/X
+nvim .config/X11/xinitrc 
+g_
+nvim lua/mappings.lua 
+g_
+nvim update_links 
+./update_links 
+peek img/wallpaper.jpg 
+peek img/lock.png 
+loca
+slock 
+slock 
+pkill xautolock 
+xautolock -time 1 -locker "slock" -detectsleep &
+cat /sys/class/backlight/intel_backlight/brightness 
+cat /sys/class/power_supply/BAT0/
+cat /sys/class/power_supply/BAT0/capacity
+cat /sys/class/power_supply/BAT0/capacity_level 
+./update_links 
+peek img/wallpaper.jpg 
+peek img/lock.png 
+loca
+slock 
+nvim .bash_functions 
+nvim .bashrc 
+..
+ls
+nvim X11
+g_
+nvim statusbar 
+tod
+todo
+peek img/lock.png 
+loca
+slock 
+slock 
+pkill xautolock 
+xautolock -time 1 -locker "slock" -detectsleep &
+cat /sys/class/backlight/intel_backlight/brightness 
+cat /sys/class/power_supply/BAT0/
+cat /sys/class/power_supply/BAT0/capacity
+cat /sys/class/power_supply/BAT0/capacity_level 
+./update_links 
+peek img/wallpaper.jpg 
+peek img/lock.png 
+loca
+slock 
+nvim .bash_functions 
+nvim .bashrc 
+..
+nvim X11
+nvim statusbar 
+n_scripts 
+cd -
+cd
+nvim .todo 
+todo
+g_
+ls
+nvim bookmarks.txt 
+g_
+nvim .bashrc 
+g_
+�ls
+ls
+ls -l
+[ .bash_functions -nt .bash_shortcuts ] && echo "hi"
+source .bashrc 
+cd -
+cd
+nvim .todo 
+todo
+nvim bookmarks.txt 
+herbe "hi"
+ls
+g_
+nvim patches/herbe-setWM_class.diff 
+cd .local/share/nvim/
+ls
+..
+ls
+..
+cd cache/
+ls
+nvim
+cd nvim/
+ls
+man nvim
+ls
+..
+sl
+ls
+..
+sl
+ls
+cd state/
+ls
+cd nvim/
+ls
+ls swap/
+rm swap/*
+printf
+printf ""
+echo
+echo "$BASH_VERSION" 
+dash
+pkill xautolock 
+xautolock -time 1 -locker "slock" -detectsleep &
+cat /sys/class/backlight/intel_backlight/brightness 
+cat /sys/class/power_supply/BAT0/
+cat /sys/class/power_supply/BAT0/capacity
+cat /sys/class/power_supply/BAT0/capacity_level 
+./update_links 
+peek img/wallpaper.jpg 
+peek img/lock.png 
+loca
+slock 
+..
+nvim X11
+nvim statusbar 
+n_scripts 
+cd -
+cd
+nvim .todo 
+todo
+nvim bookmarks.txt 
+g_
+checkbashisms *
+checkbashisms .bash_aliases 
+checkbashisms -fpv .bash_aliases 
+man checkbashisms 
+checkbashisms -xpnf .bash_aliases 
+checkbashisms -xpnf .bash_logout 
+checkbashisms -xpnf .bash_shortcuts 
+_
+rm .bash_history-*
+ls
+checkbashisms -xpnf .bashrc 
+nvim .bash_functions 
+fg
+checkbashisms -xpnf .bash_functions 
+nvim .bashrc 
+dash
+checkbashisms -xpnf .bash_[afls]*
+g_
+ls
+nvim screenshot 
+g_
+nvim styles/default.css 
+g_
+ls
+git status 
+git add bash/*
+git status 
+git add nvim/*
+git add scripts/easylog 
+git status 
+rm -v scripts/*
+./update_links 
+ls
+ls scripts/
+git status 
+git add scripts/
+git status 
+git status config/surf/script.js 
+git add config/surf/script.js 
+git status 
+git add suckless/dwm/dwm.h
+git add suckless/dwm/dwm.c
+git status 
+git add .
+ls
+cat .gitignore 
+git status 
+g_
+ls
+nvim init.lua 
+g_
+nvim volume 
+g_
+nvim picom/picom.conf 
+tree
+_
+ls
+_
+du -sc
+du -sh
+_
+toggle
+toggle
+du -sh
+ls
+_
+du -hs
+nerdfetch 
+cbonsai 
+du -hs_
+_
+top
+top
+g_
+ls
+screenshot 
+screenshot 
+screenshot 
+screenshot 
+herbe "hi"
+g_
+ls
+nvim screenshot 
+nvim screenshot 
+g_
+g_
+s
+ls
+ls ls screenshots
+rm 'screenshots\n/'
+rm -d 'screenshots\n/'
+ls
+mv screenshots/2024-07-19_16\:48\:28.png ../.dotfiles/img/setup.png
+g_
+nvim screenshot 
+nvim screenshot 
+nvim screenshot 
+rm .Xauthority 
+ls
+echo $DISPLAY
+cat .bash_profile 
+exec startx
+exec startx &> tmp
+exec startx &> tmp2
+exec startx &> tmp2
+rm tmp tmp2 tmp3
+ls
+rm .Xauthority 
+exit
+ls
+rm .Xauthority 
+rm tmp3 
+rm -rdf .cache/
+exec startx &> tmp2
+rm tmp tmp2 tmp3
+exit
+rm tmp3 
+rm .Xauthority 
+rm -rdf .cache/
+rm name.txt 
+rm tmp 
+ls .config/bash/
+cp .bash_profile .config/bash/
+man bash
+ls
+g_
+ls | dmenu
+g_
+ls | dmenu
+nvim .bash_profile 
+rm name.txt tmp 
+ls
+man Xorg 
+mv .Xauthority tmp
+nvim .bashrc 
+cd .local/xdg-ninja/
+./xdg-ninja.sh 
+mv .Xauthority tmp
+cd .local/xdg-ninja/
+./xdg-ninja.sh 
+cd
+nvim .bashrc 
+ls
+mv .Xauthority tmp 
+display-buttons 
+display-coords 
+echo "hola" | copy
+cd .local/xdg-ninja/
+./xdg-ninja.sh 
+nvim .bashrc 
+mv .Xauthority tmp 
+display-buttons 
+display-coords 
+xclip -in
+echo "HI" | xclip -in
+xclip -out
+xclip -out | xclip -selection clipboard
+echo "FFFF" | xclip -selection clipboard
+xclip -selection clipboard "hi"
+nvim bash_aliases 
+curl qrenco.de/google.com
+pwd
+nvim template 
+cd
+cd stuff/templates/
+cp bash dash
+mv bash bash2
+rm bash2 bash
+ls
+cp dash bash
+nvim dash 
+g_
+template -dash qr
+nvim qr
+nvim dash 
+template -dash qr
+nvim qr
+volume up
+_
+cbonsai 
+g_
+tree
+cd screenshots/
+peek
+..
+cd wall/
+ls
+peek orange.png 
+pwd
+nvim dash 
+template -dash qr
+nvim qr
+nvim screenshot 
+g_
+cd screenshots/
+sl
+ls
+ls -l
+mv 2024-07-19_19-55-43.png ../../.dotfiles/img/setup.png

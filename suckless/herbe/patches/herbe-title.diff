@@ -1,0 +1,60 @@
+diff --git a/config.def.h b/config.def.h
+index 86b7e76..1a02bed 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -1,6 +1,7 @@
+ static const char *background_color = "#3e3e3e";
+ static const char *border_color = "#ececec";
+ static const char *font_color = "#ececec";
++static const char *title_font_pattern = "monospace:size=17";
+ static const char *font_pattern = "monospace:size=10";
+ static const unsigned line_spacing = 5;
+ static const unsigned int padding = 15;
+diff --git a/herbe.c b/herbe.c
+index 51d3990..f6ff08f 100644
+--- a/herbe.c
++++ b/herbe.c
+@@ -129,6 +129,7 @@ int main(int argc, char *argv[])
+ 	if (!lines)
+ 		die("malloc failed");
+ 
++	XftFont *title_font = XftFontOpenName(display, screen, title_font_pattern);
+ 	XftFont *font = XftFontOpenName(display, screen, font_pattern);
+ 
+ 	for (int i = 1; i < argc; i++)
+@@ -153,8 +154,9 @@ int main(int argc, char *argv[])
+ 
+ 	unsigned int x = pos_x;
+ 	unsigned int y = pos_y;
++	unsigned int title_text_height = title_font->ascent - title_font->descent;
+ 	unsigned int text_height = font->ascent - font->descent;
+-	unsigned int height = (num_of_lines - 1) * line_spacing + num_of_lines * text_height + 2 * padding;
++	unsigned int height = (num_of_lines - 1) * line_spacing + num_of_lines * text_height + 3 * padding;
+ 
+ 	if (corner == TOP_RIGHT || corner == BOTTOM_RIGHT)
+ 		x = screen_width - width - border_size * 2 - pos_x;
+@@ -188,9 +190,15 @@ int main(int argc, char *argv[])
+ 		if (event.type == Expose)
+ 		{
+ 			XClearWindow(display, window);
+-			for (int i = 0; i < num_of_lines; i++)
+-				XftDrawStringUtf8(draw, &color, font, padding, line_spacing * i + text_height * (i + 1) + padding,
++			for (int i = 0; i < num_of_lines; i++) {
++				if (!i) {
++					XftDrawStringUtf8(draw, &color, title_font, padding, line_spacing * i + title_text_height * (i + 1) + padding,
++									  (FcChar8 *)lines[i], strlen(lines[i]));
++					continue;
++				}
++				XftDrawStringUtf8(draw, &color, font, padding, line_spacing * i+1 + text_height * (i + 2) + padding,
+ 								  (FcChar8 *)lines[i], strlen(lines[i]));
++			}
+ 		}
+ 		else if (event.type == ButtonPress)
+ 		{
+@@ -217,4 +225,4 @@ int main(int argc, char *argv[])
+ 	XCloseDisplay(display);
+ 
+ 	return exit_code;
+-}
+\ No newline at end of file
++}

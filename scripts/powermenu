@@ -1,0 +1,20 @@
+#!/bin/sh
+
+OPTIONS="  sing_out\n  lock\n  shutdown\n  reboot\n" # 󰤄           
+SELECTOR="dmenu -c -l $(printf "%b" "$OPTIONS" | wc -l)"
+
+RESULT="$(printf "%b" "$OPTIONS" | $SELECTOR)"
+RESULT="${RESULT##* }"
+
+[ -z "$RESULT" ] && exit
+
+if [ "$RESULT" = "sing_out" ]; then
+    pkill dwm
+elif [ "$RESULT" = "lock" ]; then
+    slock
+elif [ "$RESULT" = "shutdown" ]; then
+    shutdown now
+elif [ "$RESULT" = "reboot" ]; then
+    reboot
+fi
+

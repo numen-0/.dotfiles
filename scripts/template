@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 TEMPLATE_DIR="$(grep "TEMPLATES" /home/numen/.config/user-dirs.dirs | sed -e "s/^.*=\"//;s/\"//" | sed -e "s|\$HOME|$HOME|")"
-SUPPORTED="-bash, -todo"
+SUPPORTED="-bash, -dash, -todo"
 
 
 [ -z "$1" ] && echo "templates: I only need a file type, and file name" 1>&2 && exit 1
@@ -10,6 +10,7 @@ SUPPORTED="-bash, -todo"
 
 case "$1" in
     -bash) cp "$TEMPLATE_DIR/bash" "$2" && chmod +x "$2";;
+    -dash) cp "$TEMPLATE_DIR/dash" "$2" && chmod +x "$2";;
     -todo) cp "$TEMPLATE_DIR/.todo" "$2";;
     *) echo "no template for '$1' (suported: $SUPPORTED)" && exit 1 ;;
 esac

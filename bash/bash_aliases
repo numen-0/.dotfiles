@@ -1,0 +1,23 @@
+# history | awk '{cmd[$2]++} END {for(elem in cmd) {print cmd[elem] " " elem}}' | sort -n -r | head -10
+
+alias _='clear'
+alias __='clear &&'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias ls='ls -A --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color'
+
+# alias cp='cp -vi'
+# alias mkdir='mkdir -vp'
+# alias mv='mv -vi'
+
+alias suffle='sort -R'
+alias cman='man "$(apropos -s 2 . | fzf --tiebreak=begin --border=none | sed "s|\s(\([0-9]\)).*|.\1|")"'
+alias redo='eval "$(history | tail -n 250 | sed "s/\s*[0-9]\+.\s*//" | awk "!seen[\$0]++" | fzf --tiebreak="begin,length" --border=rounded --tac)"'
+
+alias peek='feh -d -S filename -.'
+alias copy='xclip -selection clipboard'
+

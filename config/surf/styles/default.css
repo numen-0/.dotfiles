@@ -1,0 +1,11 @@
+/* https://surf.suckless.org/stylesheets/darkmode_css/ */
+img {
+    opacity: .5;
+}
+img:hover {
+    opacity: 1;
+}
+
+/* https://surf.suckless.org/stylesheets/inverted_low_contrast/ */
+/* html, img { -webkit-filter: invert(95%) hue-rotate(180deg); } */
+

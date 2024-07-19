@@ -1,79 +1,75 @@
 #!/bin/bash
+# based on: https://www.slingacademy.com/article/ubuntu-how-to-write-an-rsync-backup-script/
 
-# Dirs
-DIR_ORIGIN="/home/numen/"
-DIR_BACKUPS="/var/backups/bacup"
-TAR_NAME="bacup.tar.gz"
-TAR_FILE="$DIR_BACKUPS/$TAR_NAME"
+BACUP_DIR="$HOME/stuff/bacup"
+SOURCE="$HOME"
+DEST="$BACUP_DIR/$(date +"%Y_%m_%d__%H_%M_%S")"
+CURRENT="$BACUP_DIR/current"
+TAR_FILE="$BACUP_DIR/bacup.tar.gz"
 
-DIR_TODAY="$DIR_BACKUPS/$(date +"%Y-%m-%d")"
-LIST_DIRS="$(find $DIR_BACKUPS -maxdepth 1 | rg "[0-9]{4}-[0-9]{2}-[0-9]{2}" | sort)"
-DIR_LAST="$(echo "$LIST_DIRS" | tail -n 1)"
+EXLUCE="$BACUP_DIR/exclude.txt"
+INCLUDE="$BACUP_DIR/include.txt"
 
-MAX_DIRS="16"
-LEN_DIRS="$(echo -e "$LIST_DIRS" | wc -l)"
-OLD_DIRS="$(echo -e "$LIST_DIRS" | head -n $((LEN_DIRS - MAX_DIRS)))"
-OLD_DIR_NAMES="$(echo -e "$OLD_DIRS" | sed -e "s|$DIR_BACKUPS||" | tr '\n' ' ' | sed -e "s| $||")"
+LOG="$BACUP_DIR/bacup.log"
+CMD_LOG="$BACUP_DIR/bacup_cmd.log"
 
-LOG_FILE="$DIR_BACKUPS/bacup.log"
+[ -f "$EXLUCE" ]  || touch "$EXLUCE"
+[ -f "$INCLUDE" ] || touch "$INCLUDE"
+[ -f "$CMD_LOG" ] && echo "# bacup cmd log" > "$CMD_LOG"
 
-# Prog
-[ 1 -ne $# ] && \
-    echo "bacup: only one flag must be passed (-i, -a)" 1>&2 && \
-    exit 1
-if ! sudo -nv 2> /dev/null; then
-    echo "bacup: Permission denien" 1>&2 && \
-    exit 1
+# do bacup
+echo "bacup: starting backup, $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "$CMD_LOG"
+rsync -avr --mkpath --hard-links -exclude="$BACUP_DIR" \
+    --exclude-from="$EXLUCE" --include-from="$INCLUDE" \
+    --link-dest="$CURRENT" "$SOURCE" "$DEST" 2>&1 | tee -a "$CMD_LOG"
+status="${PIPESTATUS[0]}"
+
+if [ "$status" -ne 0 ]; then
+    echo "bacup: error during backup, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: rsync failed with exit code $status" >> "$LOG"
+    herbe $'bacup\nerror' 
+
+    exit "$status"
+else
+    echo "bacup: backup done, $(date '+%Y-%m-%d %H:%M:%S')"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] OK   : rsync completed successfully." >> "$LOG"
 fi
 
-if [ "-i" = "$1" ]; then
-    [ "$MAX_DIRS" -lt "$LEN_DIRS" ] && \
-        sudo rm -rfd $OLD_DIRS && \
-        sudo easylog "$LOG_FILE" 0 "deleted old, dir(s) ($OLD_DIR_NAMES)."
+# update symlink to latest backup
+[ -L "$CURRENT" ] && rm -f "$CURRENT"
+echo -e "\n\nbacup: linkin..." | tee -a "$CMD_LOG"
+ln -vs "$DEST" "$CURRENT" | tee -a "$CMD_LOG"
+status="${PIPESTATUS[0]}"
 
-    if [ -z "$DIR_LAST" ]; then  # first bacup
-        DIR_LAST="$DIR_TODAY"
-        sudo mkdir "$DIR_TODAY"
-    elif [ "$DIR_TODAY" = "$DIR_LAST" ]; then  # today we already did one
-        sudo rm -rfd "$DIR_TODAY"
-        sudo easylog "$LOG_FILE" 0 "cleaned todays inc. backup ($DIR_TODAY)."
-        DIR_LAST="$(echo "$LIST_DIRS" | tail -n 2 | head -n 1)" # use the previous day
-    fi
+if [ "$status" -ne 0 ]; then
+    echo "bacup: error during linkin, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: linkin failed." >> "$LOG"
+    herbe $'bacup\nerror'
 
-    sudo rsync -av \
-        --exclude="$TAR_NAME" \
-        --exclude="*/.git" \
-        --exclude=".cache" \
-        --exclude=".cargo" \
-        --exclude=".eclipse" \
-        --exclude=".gnupg" \
-        --exclude=".java" \
-        --exclude=".local/share" \
-        --exclude=".local/state" \
-        --exclude=".npm" \
-        --exclude=".p2" \
-        --exclude=".swt" \
-        --exclude="snap" \
-        --exclude="stuff/.dotfiles" \
-        --exclude="stuff/Downloads" \
-        --exclude="stuff/eclipse" \
-        --exclude="stuff/eclipse-workspace/.metadata" \
-        --exclude="stuff/ehes/weka" \
-        --exclude="stuff/shit" \
-        --exclude="wekafiles" \
-        --link-dest="$DIR_LAST" \
-        "$DIR_ORIGIN" "$DIR_TODAY" && \
-    sudo easylog "$LOG_FILE" 0 "incremental bacup made." && \
-    notify-send --urgency=normal -t 3000 -i "terminal" "incremental bacup made. ミᕕ(   ᐛ   ) ᕗ" && \
-    exit 0
+    exit "$status"
+else
+    echo "bacup: linkin done, $(date '+%Y-%m-%d %H:%M:%S')"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] OK   : linkin completed successfully." >> "$LOG"
 fi
 
-echo "$DIR_LAST"
+# zip latest backup
+echo -e "\n\nbacup: tar-ing..." | tee -a "$CMD_LOG"
 
-[ "-a" = "$1" ] && \
-    sudo tar -czvf "$TAR_FILE" --directory="$DIR_LAST" . && \
-    notify-send --urgency=normal -t 3000 -i "terminal" "bacup made. ミᕕ(   ᐛ   ) ᕗ" && \
-    exit 0
+tar -czf "$TAR_FILE" -C "$BACUP_DIR" "$(basename "$DEST")" 2>&1 | tee -a "$CMD_LOG"
+status="${PIPESTATUS[0]}"
 
-echo "bacup: invalid flag" 1>&2
-exit 1
+if [ "$status" -ne 0 ]; then
+    echo "bacup: error during compresion, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: compresion failed." >> "$LOG"
+    herbe $'bacup\nerror'
+
+    exit "$status"
+else
+    echo "bacup: compresion done, $(date '+%Y-%m-%d %H:%M:%S')"
+    echo "[$(date +"%Y/%m/%d_%H:%M:%S")] OK   : compresion completed successfully." >> "$LOG"
+
+    echo -e "\n\nbacup: result:"
+    du -hs "$DEST" "$TAR_FILE"
+fi
+
+herbe $'bacup\ndone'

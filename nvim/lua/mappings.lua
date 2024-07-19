@@ -117,8 +117,8 @@ M.map("v", "<leader>w{", "c{<ESC>pa}<ESC>") -- [W]rap word {}
 M.map("v", "<leader>w}", "c{<ESC>pa}<ESC>") -- [W]rap word {}
 
 -- navigation
-M.map("n", "E", "$", { noremap = false })
-M.map("n", "B", "^", { noremap = false })
+-- M.map("n", "E", "$", { noremap = false })
+-- M.map("n", "B", "^", { noremap = false })
 -- M.map("n", "<C-u>", "<C-u>zz") -- move [U]p and center cursor
 -- M.map("n", "<C-d>", "<C-d>zz") -- move [D]own and center cursor
 

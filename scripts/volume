@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$1" = "toggle" ]; then
+    amixer set Master toggle
+elif [ "$1" = "up" ]; then
+    amixer set Master 5%+
+elif [ "$1" = "down" ]; then
+    amixer set Master 5%-
+else
+    echo "$0 toggle |> mute/unmute"
+    echo "$0 up     |> +5% volume"
+    echo "$0 down   |> -5% volume"
+    exit
+fi
+
+pkill -USR2 -f "statusbar"
+

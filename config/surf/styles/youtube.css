@@ -1,0 +1,17 @@
+
+#items {
+    visibility: hidden !important;
+    /* opacity: 0.1 !important; */
+}
+#guide-button {
+    visibility: hidden !important;
+}
+#end {
+    visibility: hidden !important;
+}
+/* #dismissible { */
+/*     visibility: hidden !important; */
+/* } */
+* {
+    color: #f02222;
+}

@@ -1,13 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-VERBOSE="F"
-CLOSE_TERMINAL="F"
-MESAGE=""
+PROGRAMS="  st\n󱝆  surf\n  firefox\n  powermenu\n  screenshot\n  bacup\n"
+SELECTOR="dmenu -c -l $(printf "%b" "$PROGRAMS" | wc -l) $*"
 
-if [ "$VERBOSE" = "T" ]; then
-    "$@" &> /dev/null & echo -n "$MESAGE"
-else
-    "$@" &> /dev/null & true 
-fi
+RESULT="$(printf "%b" "$PROGRAMS" | $SELECTOR)"
+RESULT="${RESULT##* }"
 
-[ "$CLOSE_TERMINAL" = "T" ] && kill -9 "$PPID"
+[ "$RESULT" ] && $RESULT
+

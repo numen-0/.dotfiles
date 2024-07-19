@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 [ -z "$1" ] && echo "bfind: needs a file" 1>&2 && exit 1
 
