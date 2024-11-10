@@ -5,8 +5,8 @@ MAX_BRIGHTNESS_FILE="$BRIGHTNESS_DIR/max_brightness"
 BRIGHTNESS_FILE="$BRIGHTNESS_DIR/brightness"
 MAX_BRIGHTNESS="$(cat "$MAX_BRIGHTNESS_FILE")"
 BRIGHTNESS="$(cat "$BRIGHTNESS_FILE")"
-NORM_B="80"
-LOW_B="60"
+NORM_B="70"
+LOW_B="45"
 
 if [ "$1" = "up" ]; then
     step="$((MAX_BRIGHTNESS / 20))"
@@ -33,5 +33,5 @@ fi
 
 echo "$BRIGHTNESS" > "$BRIGHTNESS_FILE"
 
-pkill -USR2 -f "statusbar"
+# pkill -USR2 -f "statusbar"
 

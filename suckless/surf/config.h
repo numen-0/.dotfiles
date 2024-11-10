@@ -102,7 +102,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 /* SETPROPHIST() - numen*/
 #define SETPROPHIST() { \
         .v = (const char *[]){ "/bin/sh", "-c", \
-             "prop=\"$(cat " HISTFILE "" \
+             "prop=\"$(cat " HISTFILE " | sort -r " \
              "| dmenu -l 8 -p '" PROMPT_HIST "' -w $1 | cut -d ' ' -f 2)\" " \
              "&& xprop -id $1 -f _SURF_GO 8u -set _SURF_GO \"$prop\"", \
              "surf-setprop", winid, NULL \
@@ -155,6 +155,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 static SiteSpecific styles[] = {
 	/* regexp                   file in $styledir */
 	{ ".*www.youtube.com.*",    "youtube.css" },
+	{ HOMEPAGE,                 "norm.css" },
 	{ ".*",                     "default.css" },
 };
 

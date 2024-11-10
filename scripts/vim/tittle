@@ -1,0 +1,11 @@
+#!/bin/sh
+
+TEXT=$(cat)
+CHAR="${1--}"
+
+if [ -n "$TEXT" ]; then
+    echo "$CHAR$CHAR $TEXT $(printf "%$((79 - ${#TEXT} - 4))s" " " | tr " " "$CHAR")"
+else
+    printf "%79s" " " | tr " " "$CHAR"
+fi
+

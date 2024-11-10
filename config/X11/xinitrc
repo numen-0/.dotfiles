@@ -2,7 +2,8 @@
 setxkbmap -layout es
 setxkbmap -option caps:escape
 
-xautolock -time 15 -locker "slock" -detectsleep &
+# xautolock -time 15 -locker "slock" -detectsleep &
+xautolock -time 15 -locker "slock" &
 xbindkeys -f "$XDG_CONFIG_HOME/xbindkeys/config" &
 statusbar &
 feh --no-fehbg --bg-fill '/home/numen/stuff/pictures/wall/wallpaper.jpg' &

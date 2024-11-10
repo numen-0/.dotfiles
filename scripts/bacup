@@ -7,6 +7,7 @@ DEST="$BACUP_DIR/$(date +"%Y_%m_%d__%H_%M_%S")"
 CURRENT="$BACUP_DIR/current"
 TAR_FILE="$BACUP_DIR/bacup.tar.gz"
 
+PACKAGES="$BACUP_DIR/packages.txt"
 EXLUCE="$BACUP_DIR/exclude.txt"
 INCLUDE="$BACUP_DIR/include.txt"
 
@@ -16,18 +17,26 @@ CMD_LOG="$BACUP_DIR/bacup_cmd.log"
 [ -f "$EXLUCE" ]  || touch "$EXLUCE"
 [ -f "$INCLUDE" ] || touch "$INCLUDE"
 [ -f "$CMD_LOG" ] && echo "# bacup cmd log" > "$CMD_LOG"
+mkdir -p "$DEST"
+
+# packages
+echo -e "bacup: saving packages" | tee -a "$CMD_LOG"
+pacman -Qqe | xargs | fold --spaces --width=80 > "$PACKAGES"
+cp -v "$PACKAGES" "$DEST"
 
 # do bacup
 echo "bacup: starting backup, $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "$CMD_LOG"
-rsync -avr --mkpath --hard-links -exclude="$BACUP_DIR" \
-    --exclude-from="$EXLUCE" --include-from="$INCLUDE" \
-    --link-dest="$CURRENT" "$SOURCE" "$DEST" 2>&1 | tee -a "$CMD_LOG"
+time { \
+    rsync -ar --mkpath --hard-links -exclude="$BACUP_DIR" \
+        --exclude-from="$EXLUCE" --include-from="$INCLUDE" \
+        --link-dest="$CURRENT" "$SOURCE" "$DEST" 2>&1 | tee -a "$CMD_LOG"; \
+    }
 status="${PIPESTATUS[0]}"
 
 if [ "$status" -ne 0 ]; then
     echo "bacup: error during backup, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
     echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: rsync failed with exit code $status" >> "$LOG"
-    herbe $'bacup\nerror' 
+    herbe $'bacup\nerror' &
 
     exit "$status"
 else
@@ -44,7 +53,7 @@ status="${PIPESTATUS[0]}"
 if [ "$status" -ne 0 ]; then
     echo "bacup: error during linkin, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
     echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: linkin failed." >> "$LOG"
-    herbe $'bacup\nerror'
+    herbe $'bacup\nerror' &
 
     exit "$status"
 else
@@ -55,13 +64,17 @@ fi
 # zip latest backup
 echo -e "\n\nbacup: tar-ing..." | tee -a "$CMD_LOG"
 
-tar -czf "$TAR_FILE" -C "$BACUP_DIR" "$(basename "$DEST")" 2>&1 | tee -a "$CMD_LOG"
+time { \
+    tar -czf "$TAR_FILE" \
+        -C "$BACUP_DIR" "$(basename "$DEST")" 2>&1 \
+        | tee -a "$CMD_LOG"; \
+    }
 status="${PIPESTATUS[0]}"
 
 if [ "$status" -ne 0 ]; then
     echo "bacup: error during compresion, $(date '+%Y-%m-%d %H:%M:%S'), check '$CMD_LOG'"
     echo "[$(date +"%Y/%m/%d_%H:%M:%S")] ERROR: compresion failed." >> "$LOG"
-    herbe $'bacup\nerror'
+    herbe $'bacup\nerror' &
 
     exit "$status"
 else
@@ -72,4 +85,4 @@ else
     du -hs "$DEST" "$TAR_FILE"
 fi
 
-herbe $'bacup\ndone'
+herbe $'bacup\ndone' &

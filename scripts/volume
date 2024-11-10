@@ -13,5 +13,5 @@ else
     exit
 fi
 
-pkill -USR2 -f "statusbar"
+pkill -USR1 -f "statusbar"
 

@@ -1,0 +1,158 @@
+#!/bin/bash
+
+PAPER=true
+ICON="\
+    #############        \n\
+  #################      \n\
+ ###################     \n\
+#########..........##    \n\
+########.............    \n\
+########.####.....####   \n\
+#######.###..#...###..#  \n\
+######..######...######  \n\
+######...####..&&&####   \n\
+######........&&&&&&&&   \n\
+######.........&&&&&&&&& \n\
+######...............    \n\
+#######..............#   \n\
+########.............##  \n\
+#########............### \n\
+##########...........####\n\
+##########...........####\n\
+######...............    \n\
+#####................    \n\
+####.................    \n\
+ ##.................     \n\
+"
+
+###############################################################################
+# user@host
+id="$(whoami)@$(cat /proc/sys/kernel/hostname)"
+# kernel
+kernel="kernel:   $(uname -r | cut -d '-' -f1)"
+# os
+. /etc/os-release;
+os="os:       $(printf "%s" "$PRETTY_NAME" | tr '[:upper:]' '[:lower:]')";
+# terminal
+term="terminal: $(ps -p $(ps -p $(ps -p $$ -o ppid=) -o ppid=) -o args=)"
+# shell
+shell="shell:    $(basename "$(echo "$SHELL")")"
+# KD WM
+window=$(xprop -root -notype)
+identifier=$(echo "${window}" | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}')
+attributes=$(xprop -id "${identifier}" -notype -f _NET_WM_NAME 8t)
+wm="wm:       $(echo "${attributes}" |               \
+        grep "_NET_WM_NAME = " |            \
+        cut --delimiter=' ' --fields=3 |    \
+        cut --delimiter='"' --fields=2      \
+    )"
+
+# ram
+ramtotal="$(grep MemTotal /proc/meminfo | tr -s ' ' | cut -d ' ' -f2)"
+ramtotal="$(printf "%s" "$((ramtotal / 100000))" \
+    | sed "s|\(.\)$|.\1|")"
+ramfree="$(grep MemFree /proc/meminfo | tr -s ' ' | cut -d ' ' -f2)"
+ramfree="$(printf "%s" "$((ramfree / 100000))" \
+    | sed "s|\(.\)$|.\1|")"
+ram="ram:      ${ramfree}/${ramtotal} G"
+# mem
+mem="mem:      $(df -h /home | \
+    sed -e '1d' -e "s|^[^ ]* *\([^ ]*\)G *[^ ]* *\([^ ]*\)G.*|\2/\1|") G"
+# packages
+packages="packages: $(pacman -Q | wc -l) (pacman)"
+# uptime
+s="$(cat /proc/uptime)";   s="${s%%.*}";
+d="$((s / 60 / 60 / 24))"; h="$((s / 60 / 60 % 24))";
+m="$((s / 60 % 60))";      s="$((s % 60))";
+# [ "$d" -gt 1 ] && d="$d days "    || { [ "$d" -eq 1 ] && d="$d day "    || d=""; }
+# [ "$h" -gt 1 ] && h="$h hours "   || { [ "$h" -eq 1 ] && h="$h hour "   || h=""; }
+# [ "$m" -gt 1 ] && m="$m mins "    || { [ "$m" -eq 1 ] && m="$m min "    || m=""; }
+# [ "$s" -gt 1 ] && s="$s seconds " || { [ "$s" -eq 1 ] && s="$s second " || s=""; }
+# uptime="$d$h$m$s"
+[ "$d" -gt 0 ] && d="${d}d " || d=""
+h="${h}h"
+m="${m}m"
+
+uptime="uptime:   $d$h $m"
+
+###############################################################################
+R="\\\\e[0m"
+B="\\\\e[0;40m"
+W="\\\\e[0;7m"
+Y="\\\\e[0;43m"
+
+printf "\e[0m%b\e[0m\n" "$(printf "%b" "$ICON" | \
+    sed -e "s|\(\#\+\)|${B}\1|g"  \
+        -e "s|\(\.\+\)|${W}\1|g"  \
+        -e "s|\(\&\+\)|${Y}\1|g"  \
+        -e "s|\( \+\)|${R}\1|g"  \
+        -e "s|[.#&]| |g"          \
+        -e "s|^|\t|g"             \
+    )"
+
+if ! $PAPER; then
+    printf "%b"          "\e[21A\e[35C"
+    printf "%b$id"       "\n\e[35C"
+    printf "%b------------------------" "\n\e[35C"
+    printf "%b"          "\n"
+    printf "%b$kernel"   "\n\e[35C"
+    printf "%b$os"       "\n\e[35C"
+    printf "%b"          "\n"
+    printf "%b$wm"       "\n\e[35C"
+    printf "%b$term"     "\n\e[35C"
+    printf "%b$shell"    "\n\e[35C"
+    printf "%b"          "\n"
+    printf "%b$mem"      "\n\e[35C"
+    printf "%b$ram"      "\n\e[35C"
+    printf "%b$packages" "\n\e[35C"
+    printf "%b"          "\n"
+    printf "%b$uptime"   "\n\e[35C"
+    printf "%b"          "\n"
+    printf "%b"          "\n"
+    printf "%b%b" "\n\e[35C" "$(seq 40 47 | sed -e "s|\(.*\)|\\\\e[\1m   |" | tr -d '\n')"
+    printf "%b%b" "\n\e[35C" "$(seq 100 107 | sed -e "s|\(.*\)|\\\\e[\1m   |" | tr -d '\n')"
+    printf "\e[0m\n"
+else
+    spaces="                          "
+    printf "%b╭──╮────────────────────────────╮"      "\e[20A\e[32C"
+    printf "%b│╭╮│                            │"      "\n\e[32C"
+    printf "%b╰─╯│  $id${spaces:${#id}}│"             "\n\e[32C"
+    printf "%b   │                            │"      "\n\e[32C"
+    printf "%b   │  $kernel${spaces:${#kernel}}│"     "\n\e[32C"
+    printf "%b   │  $os${spaces:${#os}}│"             "\n\e[32C"
+    printf "%b   │  $uptime${spaces:${#uptime}}│"     "\n\e[32C"
+    printf "%b   │                            │"      "\n\e[32C"
+    printf "%b   │  $wm${spaces:${#wm}}│"             "\n\e[32C"
+    printf "%b   │  $term${spaces:${#term}}│"         "\n\e[32C"
+    printf "%b   │  $shell${spaces:${#shell}}│"       "\n\e[32C"
+    printf "%b   │                            │"      "\n\e[32C"
+    printf "%b   │  $mem${spaces:${#mem}}│"           "\n\e[32C"
+    printf "%b   │  $ram${spaces:${#ram}}│"           "\n\e[32C"
+    printf "%b   │  $packages${spaces:${#packages}}│" "\n\e[32C"
+    printf "%b   │                            │"      "\n\e[32C"
+    printf "%b   │  %b\e[0m  │" "\n\e[32C" "$(seq 40 47 | sed -e "s|\(.*\)|\\\\e[\1m   |" | tr -d '\n')"
+    printf "%b   │  %b\e[0m  │" "\n\e[32C" "$(seq 100 107 | sed -e "s|\(.*\)|\\\\e[\1m   |" | tr -d '\n')"
+    printf "%b   │                            │"      "\n\e[32C"
+    printf "%b   ╰────────────────────────────┘\n"    "\n\e[32C"
+fi
+
+# ╭──╮────────────────────────────╮
+# │╭╮│                            │
+# ╰─╯│  numen@Archie              │
+#    │                            │
+#    │  kernel:   6.9.7           │
+#    │  os:       arch linux      │
+#    │  uptime:   0h 39m          │
+#    │                            │
+#    │  wm:       dwm             │
+#    │  terminal: st              │
+#    │  shell:    bash            │
+#    │                            │
+#    │  mem:      100/124 G       │
+#    │  ram:      14.6/16.0 G     │
+#    │  packages: 618 (pacman)    │
+#    │                            │
+#    │  #######################   │
+#    │  #######################   │
+#    │╭╮────────────────────────────╮
+#    ╰╯╰────────────────────────────╰

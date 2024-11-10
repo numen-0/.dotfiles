@@ -1,603 +1,2000 @@
-scrot --file "./tmp.png" --silent
-scrot --file "./tmp.png"
-scrot --file "./tmp2.png"
-rm tmp.png 
-rm tmp_000.png 
-rm tmp2.png 
-date +"%Y-%m-%d_%H:%M:%S"
-rm *
+peek Chess_klt45.svg 
+mv Chess_klt45.svg white_king.svg 
+mv ../../../../../downloads/Chess_q*
+mv ../../../../../downloads/Chess_q* .
+rm Chess_qlt45\(1\).svg 
+mv Chess_qlt45.svg white_queen.svg
+mv white_queen.svg black_queen.svg
+mv Chess_qdt45.svg white_queen.svg
+peek white_
+peek black_queen.svg 
+mv ../../../../../downloads/Chess_qlt45.svg white_queen.svg 
+peek white_queen.svg 
+mv ../../../../../downloads/Chess_r* .
+mv Chess_rdt45.svg black_rook.svg
+mv Chess_rlt45.svg black_rook.svg
+mv ../../../../../downloads/Chess_*
+peek black_rook.svg 
+cp black_rook.svg white_rook.svg
+mv ../../../../../downloads/Chess_* .
+rm Chess_.....\(1.*
+rm Chess_bdt45\(1\).svg 
+rm Chess_blt45\(1\).svg 
+rm Chess_ndt45\(1\).svg 
+rm Chess_nlt45\(1\).svg 
+peek Chess_rdt45.svg 
+mv Chess_rdt45.svg black_rook.svg 
+check Chess_rlt45.svg 
+peek Chess_rlt45.svg 
+rm Chess_rlt45.svg 
+peek Chess_ndt45.svg 
+mv Chess_ndt45.svg black_knight.svg
+mv Chess_nlt45.svg white_knight.svg
+peek Chess_blt45.svg 
+mv Chess_blt45.svg white_bishop.svg
+mv Chess_bdt45.svg black_bishop.svg
+peek *.svg
+nvim attributions.txt 
+nvim templates/board.html 
+mv assets/templates
+mv assets templates
+cd templates/
+nvim board.html 
 ..
-nvim bookmarks.txt 
-cp config.h config.tmp.h 
-cp config.h config.def.h 
-cp config.h config.tmp.h 
-cp config.h config.def.h 
-mv icons8-github.svg ~/.config/surf/homepage/img/github.svg
-cd homepage/
-nvim index.html 
-nvim homepage/style.css 
-cd
-nvim styles/default.css 
-cd -
-sudo pacman -Sy checkbashisms
-checkbashisms *
-nvim template 
-checkbashisms template 
-checkbashisms -x template 
-checkbashisms -xp template 
-man checkbashisms 
-checkbashisms -xpn template 
-ls -l | cut -d ' ' -f 4
-ls -l | cut -d ' ' -f 6
-ls -l | cut -d ' +' -f 9
-ls -l | cut -d ' ' -f 9
-nvim bacup 
-checkbashisms -xpn bacup 
-nvim bfind 
-checkbashisms -xpn bfind 
-checkbashisms -xpnf bfind 
+mv templates/assets .
+tree
+tree -y 20
+tree -y 20 -h
+tree -y 20 -smt
+nvim 
+ls
+ls assets/
+nvim Dockerfile 
+nvim app.py 
+nvim
+bob
 fg
-./brightness
-sh ./brightness
-sh ./brightness low
-checkbashisms -xpnf launch 
-man pkill
-checkbashisms -xpnf brightness 
-nvim brightness 
-checkbashisms -xpnf powermenu 
-checkbashisms -xpnf screenshot 
-nvim *
-checkbashisms -xpnf *
-_
-ls -l
-checkbashisms -xpnf bfind brightness launch 
-checkbashisms -xpnf powermenu screenshot statusbar 
-checkbashisms -xpnf template todo volume 
-checkbashisms -xpnf statusbar 
-nvim statusbar 
-printf "%s" "hi\nf"
-man printf
-grep "print" $(ls)
-printf "%b" "hi\nf"
-nvim powermenu
-nvim launch 
-nvim powermenu 
-printf "%b" "hi\nf" | wc -l
-printf "%b\n" "hi\nf" | wc -l
-nvim powermenu launch 
-herbe "f
-"
+sudo docker ps
+sudo docker ps
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/
+ls
+cd db/
+..
+cd server/
+bob
+pkill picom
+pkill picom
+g:
+..
+template 
+templates 
+ls
+nvim bob
+g_
+nvim template 
 g_
 ls
-nvim config.h
-sudo make clean install
-herbe "HELLO" "fuck"
-echo "⡤"
-echo "�▟"
-echo "�"▟"
-╔════╗         ╔╗     ╔═══╗  ╔╗   ╔╗ 
-║╔╗╔╗║        ╔╝╚╗    ║╔══╝  ║║  ╔╝╚╗
-╚╝║║╚╝╔══╗╔╗╔╗╚╗╔╝    ║╚══╗╔═╝║╔╗╚╗╔╝
-nvim tmp
+mv favicon_io.zip ../uni/adiministracion_de_sistemas/checkmate_committee/server/assets/
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+cd -
+pwd
+git push origin master
+g_
+nvim test 
+g_
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/
+cd db
+./transform 
+head my_games.csv 
+grep my_games.csv "^."
+grep -v "^." my_games.csv 
+grep -o "^." my_games.csv 
+grep -o "^." my_games.csv | sort -u
+grep -o "^[^,]+" my_games.csv | sort -u
+grep -o "^[^,]\+" my_games.csv | sort -u
+docker run -d --name chess-db -p 5432:5432 postgres-chess-db
+l
+sudo docker exec -it b3717358a3d8 psql -U your_username -d chess_db
+cat db/Dockerfile 
+sudo docker exec -it b3717358a3d8 psql -U numen -d chess_db
+sudo docker exec -it d5828c2bdd4e psql -U numen -d chess_db
+sudo docker exec -it d5828c2bdd4e sh
+sudo docker exec -it e572afc241a0 sh
+sudo docker exec -it e572afc241a0 bash
+nvim db/Dockerfile 
+docker volume prune
+sudo docker volume prune
+sudo docker imamges prune
+sudo docker rm a75459b18c1a
+sudo docker rm 0783ec448814
+docker image prune
+docker image
+sudo docker rmi 0783ec448814
+cd db/
+sudo docker run -d --name db-1 -p 5432:5432 chess-db
+sudo docker ls
+sudo docker exec -it db-1 psql -U root -d chess_db -c "SELECT * FROM games;"
+sudo docker prune images
+sudo docker prune
+sudo docker docker prune
+sudo docker images -h
+sudo docker prune -h
+sudo docker images
+docker system prune
+sudo docker system prune
+docker image prune -f
+sudo docker image prune -f
+docker system prune -f
+sudo docker system prune -f
+docker images
+docker rmi postgres-chess-db:latest
+sudo docker rmi postgres-chess-db:latest
+sudo docker rmi 2be72b3b31e1
+sudo docker rmi 9ce8dc969531
+sudo docker rmi 62d9298b2778
+sudo docker rmi 111a3da35e9e
+sudo docker rmi b5b2890f2689
+sudo docker rmi a8fba4a8d91f
+docker build -t postgres-chess-db .
+docker run -d --name db-1 -p 5432:5432 postgres-chess-db
+sudo docker start db-1
+sudo docker logs db-1
+nvim init.sql 
+sudo docker build -t postgres-chess-db .
+nvim transform 
+mv links.md info.md
+nvim in
+cat info.md 
+head info.md 
+# sudo docker ps -a
+nvim info.md 
+sudo docker stop db-1
+sudo docker rm db-1
+sudo docker run -d --name db-1 -p 5432:5432 postgres-chess-db
+sudo docker exec -it db-1 psql -U numen -d chess_db
+template -dash bob
+nvim info.md bob 
+cat bob
+sudo docker ps | grep "postgres-chess-db.*chess_db"
+sudo docker ps | grep "postgres-chess-db.*db-1"
+beb
+sudo docker ps -a
+cd stuff/uni/adiministracion_de_sistemas/d
+cd stuff/uni/adiministracion_de_sistemas/bd
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/db/
+pop
+top
+pop
+g_
+nvim README.md 
+g_
+g_
+nvim .bashrc 
+wc -l my_games.csv 
+grep -o "^.," my_games.csv | sort -u
+tree after/
+rm -r after/
+statusbar
+g_
+peek img/basic.png 
+peek img/mi
+peek img/mix.png 
+mv img/mix.png img/big_n.png
+nvim README.md 
+mv ../../pictures/screenshots/2024-10-30_12-58-08.png ./img/big_n.png 
+peek img/big_n.png 
+tittle 
+g_
+statusbar 
+g_
+nvim -d
+nvim test 
+g_
+peek img/mi
+peek img/mix.png 
+mv img/mix.png img/big_n.png
+mv ../../pictures/screenshots/2024-10-30_12-58-08.png ./img/big_n.png 
+peek img/big_n.png 
+tittle 
+statusbar 
+git status 
+git statu
+git add .
+nvim README.md 
+git status
+git commit -m "simplify the code, there are no presets, logos nor text to use, added some flags, LICENSE"
+g_
+cat cheat/git.cheat.txt 
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+cd -
+git push origin master
+g_
+nvim test 
+g_
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/
+cd db
+./transform 
+head my_games.csv 
+grep my_games.csv "^."
+grep -v "^." my_games.csv 
+grep -o "^." my_games.csv 
+grep -o "^." my_games.csv | sort -u
+grep -o "^[^,]+" my_games.csv | sort -u
+grep -o "^[^,]\+" my_games.csv | sort -u
+docker run -d --name chess-db -p 5432:5432 postgres-chess-db
+l
+sudo docker exec -it b3717358a3d8 psql -U your_username -d chess_db
+cat db/Dockerfile 
+sudo docker exec -it b3717358a3d8 psql -U numen -d chess_db
+sudo docker exec -it d5828c2bdd4e psql -U numen -d chess_db
+sudo docker exec -it d5828c2bdd4e sh
+sudo docker exec -it e572afc241a0 sh
+sudo docker exec -it e572afc241a0 bash
+nvim db/Dockerfile 
+docker volume prune
+sudo docker volume prune
+sudo docker imamges prune
+sudo docker rm a75459b18c1a
+sudo docker rm 0783ec448814
+docker image prune
+docker image
+sudo docker rmi 0783ec448814
+cd db/
+sudo docker run -d --name db-1 -p 5432:5432 chess-db
+sudo docker ls
+sudo docker exec -it db-1 psql -U root -d chess_db -c "SELECT * FROM games;"
+sudo docker prune images
+sudo docker prune
+sudo docker docker prune
+sudo docker images -h
+sudo docker prune -h
+sudo docker images
+docker system prune
+sudo docker system prune
+docker image prune -f
+sudo docker image prune -f
+docker system prune -f
+sudo docker system prune -f
+docker images
+docker rmi postgres-chess-db:latest
+sudo docker rmi postgres-chess-db:latest
+sudo docker rmi 2be72b3b31e1
+sudo docker rmi 9ce8dc969531
+sudo docker rmi 62d9298b2778
+sudo docker rmi 111a3da35e9e
+sudo docker rmi b5b2890f2689
+sudo docker rmi a8fba4a8d91f
+docker build -t postgres-chess-db .
+docker run -d --name db-1 -p 5432:5432 postgres-chess-db
+sudo docker start db-1
+sudo docker logs db-1
+nvim init.sql 
+sudo docker build -t postgres-chess-db .
+nvim transform 
+mv links.md info.md
+nvim in
+cat info.md 
+head info.md 
+# sudo docker ps -a
+nvim info.md 
+sudo docker stop db-1
+sudo docker rm db-1
+sudo docker run -d --name db-1 -p 5432:5432 postgres-chess-db
+sudo docker exec -it db-1 psql -U numen -d chess_db
+nvim info.md bob 
+cat bob
+sudo docker ps | grep "postgres-chess-db.*chess_db"
+sudo docker ps | grep "postgres-chess-db.*db-1"
+beb
+cd stuff/uni/adiministracion_de_sistemas/d
+cd stuff/uni/adiministracion_de_sistemas/bd
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/db/
+pop
+cat *
+cat Dockerfile 
+python3 -m venv venv
+pip install -r requirements.txt
+mkdir templates
+template -dash bob
+sudo docker build -t chess-server .
+pip install --upgrade pip
+sudo docker run -d --name chess-server -p 5000:5000 chess-server
+sudo docker ps -a
+pwd
+nvim templates/board.html
+mkdir assets
+touch assets/attributions
+mv assets/attributions{,.txt}
+nvim assets/attributions.txt 
+mv ../../../../downloads/Chess_* .
+mv Chess_* assets/
+cd assets/
+peek Chess_kdt45.svg 
+mv Chess_kdt45.svg black_king.svg
+mv Chess_pdt45.svg white_king.svg
+peek white_king.svg 
+mv white_king.svg black_pawn.svg
+peek Chess_plt45.svg 
+mv Chess_plt45.svg white_pawn.svg
+peek Chess_klt45.svg 
+mv Chess_klt45.svg white_king.svg 
+mv ../../../../../downloads/Chess_q*
+mv ../../../../../downloads/Chess_q* .
+rm Chess_qlt45\(1\).svg 
+mv Chess_qlt45.svg white_queen.svg
+mv white_queen.svg black_queen.svg
+mv Chess_qdt45.svg white_queen.svg
+peek white_
+peek black_queen.svg 
+mv ../../../../../downloads/Chess_qlt45.svg white_queen.svg 
+peek white_queen.svg 
+mv ../../../../../downloads/Chess_r* .
+mv Chess_rdt45.svg black_rook.svg
+mv Chess_rlt45.svg black_rook.svg
+mv ../../../../../downloads/Chess_*
+peek black_rook.svg 
+cp black_rook.svg white_rook.svg
+mv ../../../../../downloads/Chess_* .
+rm Chess_.....\(1.*
+rm Chess_bdt45\(1\).svg 
+rm Chess_blt45\(1\).svg 
+rm Chess_ndt45\(1\).svg 
+rm Chess_nlt45\(1\).svg 
+peek Chess_rdt45.svg 
+mv Chess_rdt45.svg black_rook.svg 
+check Chess_rlt45.svg 
+peek Chess_rlt45.svg 
+rm Chess_rlt45.svg 
+peek Chess_ndt45.svg 
+mv Chess_ndt45.svg black_knight.svg
+mv Chess_nlt45.svg white_knight.svg
+peek Chess_blt45.svg 
+mv Chess_blt45.svg white_bishop.svg
+mv Chess_bdt45.svg black_bishop.svg
+peek *.svg
+nvim attributions.txt 
+nvim templates/board.html 
+mv assets/templates
+mv assets templates
+cd templates/
+nvim board.html 
+mv templates/assets .
+tree -y 20
+tree -y 20 -h
+tree -y 20 -smt
+ls assets/
+cd stuff/uni/adiministracion_de_sistemas/checkmate_committee/
+cd db/
+cd stuff/uni/adiministracion_de_sistemas/
+mv checkmate_committee chess_committee
+cd chess_committee/
+ks
+mv chess_committee checkmate_committee
+cd checkmate_committee/
+mv checkmate_committee ai
+cd ai
+nvim Dockerfile 
+mv game_node referee
+nvim templates/
+sl
+tree -cs
+tree -csm
+tree -h
+tree -cst
+. venv/bin/activate
+cd server/
+mkdir assets/img/
+mv assets/* assets/img/
+tree
+ls -R
+nvim assets/style.css
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+ls
+..
+nvim 
+f
+nvim
+bob
+fg
+fg
+_
+g_
+nvim
+g_
+mv output-onlinepngtools.png ../uni/adiministracion_de_sistemas/checkmate_committee/server/assets/img/empty.png
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+..
+nvim 
+_
 g:
 g_
 ls
-nvim bacup 
-nvim bacup 
+nvim server/assets/script.js 
+f
+bobo
+fg
+nvim
+bob
+. venv/bin/activate
+cd server/
+mkdir assets/img/
+mv assets/* assets/img/
+tree
+ls -R
+nvim assets/style.css
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+..
+nvim 
+f
+_
+mv output-onlinepngtools.png ../uni/adiministracion_de_sistemas/checkmate_committee/server/assets/img/empty.png
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+..
+nvim 
+_
+g:
+nvim server/assets/script.js 
+f
+bobo
+g_
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+ls
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
+nvim
+fg
+bob
+pkill picom
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+..
+nvim 
+f
+_
+mv output-onlinepngtools.png ../uni/adiministracion_de_sistemas/checkmate_committee/server/assets/img/empty.png
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+nvim bob
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim bob 
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim referee/Dockerfile 
+nvim referee/app.py 
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+..
+nvim 
+_
+g:
+nvim server/assets/script.js 
+f
+bobo
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
 g_
 ls
-cd cache/
-pwd
-nvim bookmarks.txt 
-cp config.h config.tmp.h 
-cp config.h config.def.h 
-cp config.h config.tmp.h 
-cp config.h config.def.h 
-mv icons8-github.svg ~/.config/surf/homepage/img/github.svg
-cd homepage/
-nvim index.html 
-nvim homepage/style.css 
-cd
-nvim styles/default.css 
-cd -
-sudo pacman -Sy checkbashisms
-checkbashisms *
-nvim template 
-checkbashisms template 
-checkbashisms -x template 
-checkbashisms -xp template 
-man checkbashisms 
-checkbashisms -xpn template 
-ls -l | cut -d ' ' -f 4
-ls -l | cut -d ' ' -f 6
-ls -l | cut -d ' +' -f 9
-ls -l | cut -d ' ' -f 9
-nvim bacup 
-checkbashisms -xpn bacup 
-nvim bfind 
-checkbashisms -xpn bfind 
-checkbashisms -xpnf bfind 
-./brightness
-sh ./brightness
-sh ./brightness low
-checkbashisms -xpnf launch 
-man pkill
-checkbashisms -xpnf brightness 
-nvim brightness 
-checkbashisms -xpnf powermenu 
-checkbashisms -xpnf screenshot 
-nvim *
-checkbashisms -xpnf *
-_
-checkbashisms -xpnf bfind brightness launch 
-checkbashisms -xpnf powermenu screenshot statusbar 
-checkbashisms -xpnf template todo volume 
-checkbashisms -xpnf statusbar 
-nvim statusbar 
-printf "%s" "hi\nf"
-man printf
-grep "print" $(ls)
-printf "%b" "hi\nf"
-nvim powermenu
-nvim launch 
-nvim powermenu 
-printf "%b" "hi\nf" | wc -l
-printf "%b\n" "hi\nf" | wc -l
-nvim powermenu launch 
-herbe "f
-"
-nvim config.h
-sudo make clean install
-herbe "HELLO" "fuck"
-echo "⡤"
-echo "�▟"
-echo "�"▟"
-╔════╗         ╔╗     ╔═══╗  ╔╗   ╔╗ 
-║╔╗╔╗║        ╔╝╚╗    ║╔══╝  ║║  ╔╝╚╗
-╚╝║║╚╝╔══╗╔╗╔╗╚╗╔╝    ║╚══╗╔═╝║╔╗╚╗╔╝
-nvim tmp
+nvim
+bob
+fg
 g_
-du -csh
+ls
+ls -l
+cat bash_shortcuts 
+fg
+cd stuff/uni/
+mv adiministracion_de_sistemas/ as
+g_
+nvim bash_functions 
+printf "%b" "/home/" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+printf "%b" "/home/a" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+nvim bash_functions 
+g_
+g_bash 
+nvim
+rm bash_history-0*
+ls
+nvim bash_aliases 
+fg
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+nvim 
+f
+_
+mv output-onlinepngtools.png ../uni/adiministracion_de_sistemas/checkmate_committee/server/assets/img/empty.png
+nvim assets/script.js
+sudo docker images
+sudo docker images prune
+sudo docker image prune
+sudo docker killall 
+sudo docker kill c78d9074a8a2
+sudo docker kill dece7578ae70
+sudo docker kill b047d5cb1811
+sudo docker kill 8b6fece183bb
+nvim app.py 
+cat bob 
+sudo -S docker-compose up --build" &
+nvim docker-compose.yml 
+sudo -S docker-compose up --build
+sudo docker ps
+sudo docker ps -q
+nvim server/requirements.txt 
+pip install request
+pip install requests
+docker-compose build server
+nvi
+cp db/bob ../../../templates/bob
+nvim referee/game_logic.py 
+mv referee/game_logic.py referee/app.py
+nvim scr
+bib
+bo
+cd server/assets/
+mv favicon_io.zip img/
+cd img/
+rm empty.png 
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+rm favicon-16x16.png 
+rm favicon-32x32.png 
+nvim 
+_
+g:
+nvim server/assets/script.js 
+f
+bobo
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
+ls -l
+cat bash_shortcuts 
+cd stuff/uni/
+mv adiministracion_de_sistemas/ as
+nvim bash_functions 
+printf "%b" "/home/" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+printf "%b" "/home/a" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+nvim bash_functions 
+g_bash 
+rm bash_history-0*
+nvim bash_aliases 
+g_
+template -todo .todo
+nvim .todo 
+nvim referee/app.py 
+ls referee/
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+fg
+bob
+nvim
+ls
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+pip install python-chess
+rm -r venv/
+cd stuff/uni/minecraft/
+ls
+rm favicon-32x32.png 
+_
+g:
+nvim server/assets/script.js 
+bobo
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
+ls -l
+cat bash_shortcuts 
+cd stuff/uni/
+mv adiministracion_de_sistemas/ as
+nvim bash_functions 
+printf "%b" "/home/" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+printf "%b" "/home/a" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+nvim bash_functions 
+g_bash 
+rm bash_history-0*
+nvim bash_aliases 
+template -todo .todo
+nvim .todo 
+ls referee/
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+rm -r venv/
+g_
+ls
+python -m venv /home/numen/stuff/uni/as/checkmate_committee/myvenv
+. myvenv/bin/activate
+pip install python-chess
+pip install flask
+nvim 
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+nvim referee/app.py 
+nvim
+bob
+fg
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+pip install python-chess
+rm -r venv/
+cd stuff/uni/minecraft/
+rm favicon-32x32.png 
+_
+g:
+nvim server/assets/script.js 
+bobo
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
+ls -l
+cat bash_shortcuts 
+cd stuff/uni/
+mv adiministracion_de_sistemas/ as
+nvim bash_functions 
+printf "%b" "/home/" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+printf "%b" "/home/a" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+nvim bash_functions 
+g_bash 
+rm bash_history-0*
+nvim bash_aliases 
+template -todo .todo
+nvim .todo 
+ls referee/
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+rm -r venv/
+python -m venv /home/numen/stuff/uni/as/checkmate_committee/myvenv
+pip install python-chess
+pip install flask
+nvim 
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+g_
+. myvenv/bin/activate
+nvim referee/app.py 
+bib
+dg
+nvim
+todo
+bob
+fg
+sudo docker ps
+sudo docker image purge
+docker image prune
+sudo docker image prune
+sudo docker purge image
+sudo docker rmi $(docker images -q)
+sudo docker rmi $(sudo docker images -q)
+sudo docker images
+docker system prune -a
+sudo docker system prune -a
+ls
+g_
+nvim 
+bob
+nvim .todo 
+nvim .todo 
+g_
+fg
+nvim
+g_
+nvim .todo 
+. myvenv/bin/activate
+ls
+nvim
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+pip install python-chess
+rm -r venv/
+cd stuff/uni/minecraft/
+rm favicon-32x32.png 
+_
+g:
+nvim server/assets/script.js 
+bobo
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
+mv ../../../downloads/repeat.png ../../../downloads/flip.png server/assets/img/ -v
+peek server/assets/img/repeat.png 
+peek server/assets/img/flip.png 
+nvim server/templates/board.html 
+mv server/assets/img/repeat.png server/assets/img/restart.png
+mv ../../../downloads/dark-mode.png server/assets/img/switch.png
+ls -l
+cat bash_shortcuts 
+cd stuff/uni/
+mv adiministracion_de_sistemas/ as
+nvim bash_functions 
+printf "%b" "/home/" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+printf "%b" "/home/a" | sed -e "s|$HOME|~|" -e "s|/$||" | sort -u
+nvim bash_functions 
+g_bash 
+rm bash_history-0*
+nvim bash_aliases 
+template -todo .todo
+ls referee/
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+nvim bob 
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+rm -r venv/
+python -m venv /home/numen/stuff/uni/as/checkmate_committee/myvenv
+pip install python-chess
+pip install flask
+nvim 
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+. myvenv/bin/activate
+nvim referee/app.py 
+bib
+dg
+todo
+sudo docker ps
+sudo docker image purge
+docker image prune
+sudo docker image prune
+sudo docker purge image
+sudo docker rmi $(docker images -q)
+sudo docker rmi $(sudo docker images -q)
+sudo docker images
+docker system prune -a
+sudo docker system prune -a
+nvim 
+. myvenv/bin/activate
+g_
+ls
+bo
+bb
+nvim .todo 
+bob
+fg
+nvim
+$((7*4+5*3+6*6+2*8))
+rm bash_history-0*
+nvim bash_aliases 
+template -todo .todo
+ls referee/
+nvim referee/Dockerfile 
+cd referee/
+cp ../server/bob .
+nvim ../db/bob 
+nvim Dockerfile 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+nvim bob
+sudo docker build -t flask-chess-referee .
+..
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+rm -r venv/
+python -m venv /home/numen/stuff/uni/as/checkmate_committee/myvenv
+pip install python-chess
+pip install flask
+nvim 
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+. myvenv/bin/activate
+nvim referee/app.py 
+bib
+dg
+todo
+sudo docker ps
+sudo docker image purge
+docker image prune
+sudo docker image prune
+sudo docker purge image
+sudo docker rmi $(docker images -q)
+sudo docker rmi $(sudo docker images -q)
+sudo docker images
+docker system prune -a
+sudo docker system prune -a
+nvim 
+. myvenv/bin/activate
+bo
+bb
+$((7*4+5*3+6*6+2*8))
+g_
+touch PASSWORD
+touch .gitignore
+rm stuff.txt 
+ls
+tree
 nvim .gitignore 
-ls nvim/nvim/
-ls 
-ls bin
-rm -d bin/
-ls config/
-ls config/X11
-tree config/
-ls config/surf/
-ls
-ls -l
-fg
-ls bash/
-nvim update_links 
-nvim exclude.txt 
-./update_links 
-tree
-git status
-g_
-ls
-nvim config.h
-sudo make clean install
-herbe "hi"
-ls
-xporp
-xprop 
-g_
-ls
-nvim .bash_functions 
-ls
-rm .fehbg 
-g_
-ls
-g_
-ls
-nvim 
-nvim 
-ls
-g_
-nvim bacup 
-xprop 
-nvim .bash_functions 
-rm .fehbg 
-nvim 
-g_
-ls
-nvim config.h
-sudo make clean install
-statusbar 
-git status
-nvim config.h
-sudo make clean install
-herbe "hi"
-xporp
-xprop 
-nvim .bash_functions 
-rm .fehbg 
+nvim bob 
 nvim
-..
-cd picom/
-nvim picom.conf 
-g_
-nvim statusbar 
-:q
-ls
-sad
-ls config/surf/
-ls -l
-fg
-ls bash/
-nvim update_links 
-nvim exclude.txt 
-./update_links 
-tree
+bob
+git init
 git status
-nvim config.h
-sudo make clean install
-herbe "hi"
-xporp
-xprop 
-feh purple-aesthetic-3840x2160-17517.jpg 
-feh --bg-fill lake-mountains-rocks-sunrise-daylight-scenery-illustration-3840x2160-3773.jpg 
-feh --bg-fill macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-3840x2160-1455.jpg 
-feh --bg-fill purple-aesthetic-3840x2160-17517.jpg 
-feh --bg-fill vibrant-landscape-3840x2160-17436.jpg 
-xprop
-feh --bg-fill wp9083282-3829286243.jpg 
-rm *.jpg
-feh --bg-fill leaves-blue-3840x2160-17461.jpeg 
-rm leaves-blue-3840x2160-17461.jpeg red-trees-during-autumn-a70g8trt2pb9zh0m.webp red-abstract-lines-7xzx26h4bcp5c6z7.webp 
-..
-feh --bg-fill roses.jpg 
-feh --bg-fill 28xce59k82951-863681177.png 
-rm roses.jpg 
-mv 28xce59k82951-863681177.png wall/orange.png
-g_
-cd
-cd .config/X11/
-ls
-nvim xinitrc 
-mv 28xce59k82951-863681177.png wall/orange.png
-cd
-cd .config/X11/
-nvim xinitrc 
-rm .fehbg 
-g_
-cd wall/
-alias
-alias | grep "feh"
-ls
-peek *
-nvim xinitrc 
-ls
-cd wall/
-rm mountain.jpg 
-rm moon.png cool_blue.png cool_dark.png cool_place.png 
-cd
-cd .config/X
-nvim .config/X11/xinitrc 
-g_
-nvim lua/mappings.lua 
-g_
-nvim update_links 
-./update_links 
-peek img/wallpaper.jpg 
-peek img/lock.png 
-loca
-slock 
-slock 
-pkill xautolock 
-xautolock -time 1 -locker "slock" -detectsleep &
-cat /sys/class/backlight/intel_backlight/brightness 
-cat /sys/class/power_supply/BAT0/
-cat /sys/class/power_supply/BAT0/capacity
-cat /sys/class/power_supply/BAT0/capacity_level 
-./update_links 
-peek img/wallpaper.jpg 
-peek img/lock.png 
-loca
-slock 
-nvim .bash_functions 
-nvim .bashrc 
-..
-ls
-nvim X11
-g_
-nvim statusbar 
-tod
-todo
-peek img/lock.png 
-loca
-slock 
-slock 
-pkill xautolock 
-xautolock -time 1 -locker "slock" -detectsleep &
-cat /sys/class/backlight/intel_backlight/brightness 
-cat /sys/class/power_supply/BAT0/
-cat /sys/class/power_supply/BAT0/capacity
-cat /sys/class/power_supply/BAT0/capacity_level 
-./update_links 
-peek img/wallpaper.jpg 
-peek img/lock.png 
-loca
-slock 
-nvim .bash_functions 
-nvim .bashrc 
-..
-nvim X11
-nvim statusbar 
-n_scripts 
-cd -
-cd
+git add .
+git status 
+fg
 nvim .todo 
-todo
-g_
-ls
-nvim bookmarks.txt 
-g_
-nvim .bashrc 
-g_
-�ls
-ls
-ls -l
-[ .bash_functions -nt .bash_shortcuts ] && echo "hi"
-source .bashrc 
-cd -
-cd
-nvim .todo 
-todo
-nvim bookmarks.txt 
-herbe "hi"
-ls
-g_
-nvim patches/herbe-setWM_class.diff 
-cd .local/share/nvim/
-ls
+man text
+man test
+man ps
+man pgrep 
+docker build -t chess-referee .
+sudo docker build -t chess-referee .
+sudo docker build -t flask-chess-referee .
+python -m venv venv
+. venv/bin/activate
+sudo pip install python-chess
+source /home/numen/stuff/uni/as/checkmate_committee/venv/bin/activate
+rm -r venv/
+python -m venv /home/numen/stuff/uni/as/checkmate_committee/myvenv
+pip install python-chess
+pip install flask
+nvim 
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+. myvenv/bin/activate
+nvim referee/app.py 
+bib
+dg
+sudo docker ps
+sudo docker image purge
+docker image prune
+sudo docker image prune
+sudo docker purge image
+sudo docker rmi $(docker images -q)
+sudo docker rmi $(sudo docker images -q)
+docker system prune -a
+sudo docker system prune -a
+nvim 
+. myvenv/bin/activate
+bo
+bb
+$((7*4+5*3+6*6+2*8))
+touch PASSWORD
+touch .gitignore
+rm stuff.txt 
+tree
+nvim .gitignore 
+git init
+git status 
+nvim bob 
+ps -aux
+echo "$BOB_POPED_TERM"
+sudo docker prune images -a
+sudo docker prune image -a
+sudo docker image prune -a
+echo $BOB_POPED_TERM
+ps -aux | grep docker
+ps aux | grep '[s]t -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\s' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d ' ' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\t' -f2
+man ut
+man cut
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build" | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build"
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"     | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"
+kill 6636
+sudo docker images
+sudo docker images -a
+sudo docker image -a
+nvim README.md
+cd db/
+bob
+nvim bob
+,,
 ..
-ls
-..
-cd cache/
+ks
 ls
 nvim
-cd nvim/
-ls
-man nvim
-ls
-..
-sl
-ls
-..
-sl
-ls
-cd state/
-ls
-cd nvim/
-ls
-ls swap/
-rm swap/*
-printf
-printf ""
-echo
-echo "$BASH_VERSION" 
-dash
-pkill xautolock 
-xautolock -time 1 -locker "slock" -detectsleep &
-cat /sys/class/backlight/intel_backlight/brightness 
-cat /sys/class/power_supply/BAT0/
-cat /sys/class/power_supply/BAT0/capacity
-cat /sys/class/power_supply/BAT0/capacity_level 
-./update_links 
-peek img/wallpaper.jpg 
-peek img/lock.png 
-loca
-slock 
-..
-nvim X11
-nvim statusbar 
-n_scripts 
+git status
+nvim RE
+nvim README.md 
+git add .
+git commint -m "front-end almost done"
+git commit -m "front-end almost done"
+toggle
+git remote add origin git@github.com:numen-0/chess_commettee.git
+g_
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
 cd -
-cd
-nvim .todo 
-todo
-nvim bookmarks.txt 
-g_
-checkbashisms *
-checkbashisms .bash_aliases 
-checkbashisms -fpv .bash_aliases 
-man checkbashisms 
-checkbashisms -xpnf .bash_aliases 
-checkbashisms -xpnf .bash_logout 
-checkbashisms -xpnf .bash_shortcuts 
-_
-rm .bash_history-*
-ls
-checkbashisms -xpnf .bashrc 
-nvim .bash_functions 
+git push -u origin master
 fg
-checkbashisms -xpnf .bash_functions 
-nvim .bashrc 
-dash
-checkbashisms -xpnf .bash_[afls]*
+todo
+nvim .todo 
 g_
 ls
-nvim screenshot 
+nvim
+bob
+cat bob 
+sudo docker-compose up --build
+fg
+cd -
+git push -u origin master
+todo
+nvim .todo 
+ls
+cat bob 
+sudo docker-compose up --build
+pwd
 g_
-nvim styles/default.css 
+fg
+. myvenv/bin/activate
+nvim
+bob
+git init
+git status 
+nvim bob 
+ps -aux
+echo "$BOB_POPED_TERM"
+sudo docker prune images -a
+sudo docker prune image -a
+sudo docker image prune -a
+echo $BOB_POPED_TERM
+ps -aux | grep docker
+ps aux | grep '[s]t -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\s' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d ' ' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\t' -f2
+man ut
+man cut
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build" | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build"
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"     | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"
+kill 6636
+sudo docker images
+sudo docker images -a
+sudo docker image -a
+nvim README.md
+cd db/
+nvim bob
+,,
+..
+ks
+git status
+nvim RE
+nvim README.md 
+git add .
+git commint -m "front-end almost done"
+git commit -m "front-end almost done"
+toggle
+git remote add origin git@github.com:numen-0/chess_commettee.git
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+pwd
+g_
+sudo docker logs chess-referee
+sudo docker logs referee
+sudo docker ps
+. myvenv/bin/activate
+sudo docker logs checkmate_committee-referee-1
+python
+bob
+ls
+nvim
+fg
+sudo docker ps
+. myvenv/bin/activate
+sudo docker logs checkmate_committee-referee-1
+python
+fg
+g_
+nvim docker-compose.yml 
+nvim ai/Dockerfile 
+..
+..-
+.-
+cd -
+ls
+nvim
+bob
+sudo docker-compose down
+g_
+nvim
+pip install flask
+mv .pyrightconfig.json pyrightconfig.json 
+nvim pyrightconfig.json 
+f
+pip install flask-cors
+bib
+sudo docker image purge
+docker image prune
+sudo docker purge image
+sudo docker rmi $(docker images -q)
+sudo docker rmi $(sudo docker images -q)
+docker system prune -a
+sudo docker system prune -a
+bb
+$((7*4+5*3+6*6+2*8))
+touch PASSWORD
+touch .gitignore
+rm stuff.txt 
+tree
+nvim .gitignore 
+git init
+git status 
+nvim bob 
+ps -aux
+echo "$BOB_POPED_TERM"
+sudo docker prune images -a
+sudo docker prune image -a
+echo $BOB_POPED_TERM
+ps -aux | grep docker
+ps aux | grep '[s]t -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\s' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d ' ' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\t' -f2
+man ut
+man cut
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build" | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build"
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"     | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"
+kill 6636
+sudo docker images -a
+sudo docker image -a
+nvim README.md
+cd db/
+nvim bob
+,,
+ks
+git status
+nvim RE
+nvim README.md 
+git add .
+git commint -m "front-end almost done"
+git commit -m "front-end almost done"
+toggle
+git remote add origin git@github.com:numen-0/chess_commettee.git
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+git init
+git status 
+nvim bob 
+ps -aux
+echo "$BOB_POPED_TERM"
+sudo docker prune images -a
+sudo docker prune image -a
+echo $BOB_POPED_TERM
+ps -aux | grep docker
+ps aux | grep '[s]t -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build'
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\s' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d ' ' -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -d '\t' -f2
+man ut
+man cut
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | cut -f2
+ps aux | grep 'st -e bash -c cd /home/numen/stuff/uni/as/checkmate_committee && pwd && cat PASSWORD | sudo -S docker-compose up --build' | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build" | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd && \(cat PASSWORD \)?| sudo -S docker-compose up --build"
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"     | awk '{print $2}' | xargs -r kill
+ps aux | grep -E "st -e bash -c cd $(pwd) && pwd \(&& cat PASSWORD \)?| sudo -S docker-compose up --build"
+kill 6636
+sudo docker images -a
+sudo docker image -a
+nvim README.md
+cd db/
+nvim bob
+,,
+ks
+git status
+nvim RE
+nvim README.md 
+git add .
+git commint -m "front-end almost done"
+git commit -m "front-end almost done"
+toggle
+git remote add origin git@github.com:numen-0/chess_commettee.git
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+cd -
+git push -u origin master
+todo
+nvim .todo 
+cat bob 
+sudo docker-compose up --build
+sudo docker logs chess-referee
+sudo docker logs referee
+sudo docker logs checkmate_committee-referee-1
+sudo docker logs checkmate_committee-referee-1
+nvim docker-compose.yml 
+nvim ai/Dockerfile 
+..-
+.-
+cd -
+g_
+mv checkmate_committee chess_committee
+cd chess_committee/
+nvim 
+bpb
+dg
+. myvenv/bin/activate
+mv ../../../downloads/favicon_io.zip server/assets/img/
+cd server/assets/
+cd img/
+extract favicon_io.zip 
+rm android-chrome-*
+rm apple-touch-icon.png 
+nvim site.webmanifest 
+rm site.webmanifest 
+mv templates/* assets/ -v
+tree assets/
+rm -d templates/
+nvim Dockerfile 
+cd server/
+ls assets/
+cd assets/img/
+peek favicon.ico 
+pwd
+nvim referee/app.py 
+cd referee/
+nvim app.py 
+ob
+bo
+cat bob
+..
+sudo docker ps
+sudo docker kill 7ea57f5d587a
+sudo docker kill fc23d968149c
+sudo docker prune -a
+sudo docker image prune -a
+sudo docker images
+sudo docker image prune
+sudo docker-compose down
+docker stop $(docker ps -aq)
+sudo docker system prune -a --volumes
+nvim
+bob
+python
+pip
+pip list
+pip install chess
+fg
+rm -rd myvenv/
+python -m venv venv
+ls
+pip install chess
+fg
+rm -rd myvenv/
+python -m venv venv
 g_
 ls
-git status 
-git add bash/*
-git status 
-git add nvim/*
-git add scripts/easylog 
-git status 
-rm -v scripts/*
-./update_links 
+nvim bash_functions 
+sudo docker prune -a
+sudo docker image prune -a
+sudo docker images
+sudo docker image prune
+sudo docker-compose down
+docker stop $(docker ps -aq)
+sudo docker system prune -a --volumes
+pip
+pip list
+rm -rd myvenv/
+python -m venv venv
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+g_
+. venv/bin/activate
+pip install chess
+pip install Flask
 ls
-ls scripts/
-git status 
-git add scripts/
-git status 
-git status config/surf/script.js 
-git add config/surf/script.js 
-git status 
-git add suckless/dwm/dwm.h
-git add suckless/dwm/dwm.c
+pip freeze > requirements.txt
+nvim
+python
+bob
+fg
+pip install chess
+rm -rd myvenv/
+python -m venv venv
+pip install chess
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+sudo docker prune -a
+sudo docker image prune -a
+sudo docker images
+sudo docker image prune
+docker stop $(docker ps -aq)
+sudo docker system prune -a --volumes
+pip
+pip list
+rm -rd myvenv/
+python -m venv venv
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+pip install chess
+pip install Flask
+pip freeze > requirements.txt
+python
+g_
+. venv/bin/activate
+ls
+cat requirements.txt 
+nvim .todo 
+fgg
+bob
+fg
+nvim
+sudo docker-compose down
+fg
+sudo docker-compose down
+g_
+nvim .todo 
+. venv/bin/activate
+nvim
+ls
+nvim referee/app.py
+g_
+bob
+sudo docker-compose down
+curl -X POST http://localhost:5002/fen_hash -H "Content-Type: application/json" -d '{"fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"}'
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+sudo docker prune -a
+sudo docker image prune -a
+sudo docker images
+sudo docker image prune
+docker stop $(docker ps -aq)
+sudo docker system prune -a --volumes
+pip
+pip list
+rm -rd myvenv/
+python -m venv venv
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+pip install chess
+pip install Flask
+pip freeze > requirements.txt
+python
+. venv/bin/activate
+cat requirements.txt 
+nvim .todo 
+fgg
+nvim .todo 
+. venv/bin/activate
+nvim referee/app.py
+g_
+mv ai_logic.py app.py
+nvim Dockerfile 
+..
+nvim server/assets/board.html 
+nvim ai/requirements.txt referee/requirements.txt 
+nvim
+sudo docker-compose down
+sudo docker images prune -a
+sudo docker images prune
+sudo docker-compose up
+cd ai/
+ls
+sudo docer
+cp ../db/bob .
+nvim bob 
+fg
+bob
+sudo docker ps
+#!/bin/sh
+set -eu
+C="\e[92m"
+R="\e[0m"
+quiet=false
+image_name="flask-chess-ai"
+container_name="chess-ai"
+ai_port=5002  # Port for AI service
+# Optional: load password for sudo if stored in ../PASSWORD
+[ -f ../PASSWORD ] && cat ../PASSWORD | sudo -S -v
+# Check if the Docker image for the AI service exists; if not, build it
+if ! sudo docker images | grep -q "$image_name"; then     printf "${C}%s${R}\n" "Building image $image_name";     sudo docker build -t $image_name .; else     printf "${C}%s${R}\n" "Image $image_name exists. Skipping build."; fi
+# Check if the container is running; if so, stop and remove it
+printf "${C}%s${R}\n" "Managing existing $container_name container"
+if sudo docker ps -a | grep -q "$container_name"; then     sudo docker stop "$container_name" && sudo docker rm "$container_name";     printf "${C}%s${R}\n" "Stopped and removed existing $container_name container"; fi
+# Run the container
+printf "${C}%s${R}\n" "Starting $container_name container"
+sudo docker run -d --name $container_name -p $ai_port:$ai_port $image_name
+python -m venv venv
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+pip install chess
+pip install Flask
+pip freeze > requirements.txt
+python
+. venv/bin/activate
+cat requirements.txt 
+nvim .todo 
+fgg
+sudo docker-compose down
+sudo docker-compose down
+nvim .todo 
+. venv/bin/activate
+nvim referee/app.py
+sudo docker-compose down
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+sudo docker prune -a
+sudo docker image prune -a
+sudo docker images
+sudo docker image prune
+docker stop $(docker ps -aq)
+sudo docker system prune -a --volumes
+pip
+pip list
+rm -rd myvenv/
+python -m venv venv
+rm -rd myvenv/
+python -m venv venv
+nvim bash_functions 
+pip install chess
+pip install Flask
+pip freeze > requirements.txt
+python
+. venv/bin/activate
+cat requirements.txt 
+nvim .todo 
+fgg
+nvim .todo 
+. venv/bin/activate
+nvim referee/app.py
+mv ai_logic.py app.py
+nvim Dockerfile 
+nvim server/assets/board.html 
+nvim ai/requirements.txt referee/requirements.txt 
+sudo docker-compose down
+sudo docker images prune -a
+sudo docker images prune
+cd ai/
+sudo docer
+cp ../db/bob .
+nvim bob 
+#!/bin/sh
+set -eu
+C="\e[92m"
+R="\e[0m"
+quiet=false
+image_name="flask-chess-ai"
+container_name="chess-ai"
+ai_port=5002  # Port for AI service
+# Optional: load password for sudo if stored in ../PASSWORD
+[ -f ../PASSWORD ] && cat ../PASSWORD | sudo -S -v
+# Check if the Docker image for the AI service exists; if not, build it
+if ! sudo docker images | grep -q "$image_name"; then     printf "${C}%s${R}\n" "Building image $image_name";     sudo docker build -t $image_name .; else     printf "${C}%s${R}\n" "Image $image_name exists. Skipping build."; fi
+# Check if the container is running; if so, stop and remove it
+printf "${C}%s${R}\n" "Managing existing $container_name container"
+if sudo docker ps -a | grep -q "$container_name"; then     sudo docker stop "$container_name" && sudo docker rm "$container_name";     printf "${C}%s${R}\n" "Stopped and removed existing $container_name container"; fi
+# Run the container
+printf "${C}%s${R}\n" "Starting $container_name container"
+sudo docker run -d --name $container_name -p $ai_port:$ai_port $image_name
+cd ai
+curl -X POST http://localhost:5002/fen_hash -H "Content-Type: application/json" -d '{"fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"}'
+sudo docker ps
+nvim app.py 
+curl -X POST http://localhost:5002/encode_board -H "Content-Type: application/json" -d '{"fen": "8/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"}'
+curl -X POST http://localhost:5002/encode_board -H "Content-Type: application/json" -d '{"fen": "8/pppppppp/8/8/8/8/PPPPPPPP/8 w KQkq - 0 1"}'
+curl -X POST http://localhost:5002/encode_board -H "Content-Type: application/json" -d '{"fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"}'
+df
+python test.py 
+..
+ls
+nvim
+sudo docker-compose up
+bob
+fg
+git log 
+rm server/assets/img/favicon-*
+git status
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
 git status 
 git add .
-ls
-cat .gitignore 
+git commit -m "front end finished, maybe some bugs left, and dont look at the code pls, referee also done (we could make it more verbose but...)"
+git log
+g_
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+.-
+git push origin master
+g_
+nvim
+nvim
+sudo docker-compose up
+git log 
+rm server/assets/img/favicon-*
+git status
+nvim server/assets/img/about.txt 
+rm server/assets/img/about.txt 
 git status 
+git add .
+git commit -m "front end finished, maybe some bugs left, and dont look at the code pls, referee also done (we could make it more verbose but...)"
+git log
 g_
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+.-
+git push origin master
+g_
+nvim
+cd stuff/uni/minecraft/
 ls
-nvim init.lua 
-g_
-nvim volume 
-g_
-nvim picom/picom.conf 
-tree
-_
+mkdir clase_test
+cd clase_test/
+python -m venv
+python -m venv venv
+. venv/bin/activate
+pip install numpy
+bob
+nvim test.py
+fg
+python test.py 
+nvim
+sudo pacman -Syu fd
+python -m venv venv
+. venv/bin/activate
+pip install numpy
+bob
+nvim test.py
+python test.py 
 ls
-_
-du -sc
-du -sh
-_
+git status 
+nvim README.md 
+git status
+git add .
+git commit -m "changed some minor details, about BufLeave event"
+cat cheat/git.cheat.txt 
+cat cheat/ssh.cheat.txt 
+ssh -i ~/.local/ssh/numen git@github.com
+eval "$(ssh-agent -s)"
+ssh-add ~/.local/ssh/numen
+.-
 toggle
+git push
+git log
+g_
+vim lua/utils.lua 
+sudo nvim lua/utils.lua 
+fg
+nvim
+reboot now
+shutdown now
 toggle
-du -sh
-ls
-_
-du -hs
-nerdfetch 
-cbonsai 
-du -hs_
-_
-top
-top
+git push
+git log
+vim lua/utils.lua 
+sudo nvim lua/utils.lua 
+fg
+reboot now
+shutdown now
 g_
-ls
-screenshot 
-screenshot 
-screenshot 
-screenshot 
-herbe "hi"
-g_
-ls
-nvim screenshot 
-nvim screenshot 
-g_
-g_
-s
-ls
-ls ls screenshots
-rm 'screenshots\n/'
-rm -d 'screenshots\n/'
-ls
-mv screenshots/2024-07-19_16\:48\:28.png ../.dotfiles/img/setup.png
-g_
-nvim screenshot 
-nvim screenshot 
-nvim screenshot 
-rm .Xauthority 
-ls
-echo $DISPLAY
-cat .bash_profile 
-exec startx
-exec startx &> tmp
-exec startx &> tmp2
-exec startx &> tmp2
-rm tmp tmp2 tmp3
-ls
-rm .Xauthority 
-exit
-ls
-rm .Xauthority 
-rm tmp3 
-rm -rdf .cache/
-exec startx &> tmp2
-rm tmp tmp2 tmp3
-exit
-rm tmp3 
-rm .Xauthority 
-rm -rdf .cache/
-rm name.txt 
-rm tmp 
-ls .config/bash/
-cp .bash_profile .config/bash/
-man bash
-ls
-g_
-ls | dmenu
-g_
-ls | dmenu
-nvim .bash_profile 
-rm name.txt tmp 
-ls
-man Xorg 
-mv .Xauthority tmp
-nvim .bashrc 
-cd .local/xdg-ninja/
-./xdg-ninja.sh 
-mv .Xauthority tmp
-cd .local/xdg-ninja/
-./xdg-ninja.sh 
+nvim
+nvim -v
+:x
+lls
+cp -rv nvim{,bk}
+nvim nvim.bk/
+tree nvim.bk/
+mv nvimbk nvim.bk2
 cd
-nvim .bashrc 
-ls
-mv .Xauthority tmp 
-display-buttons 
-display-coords 
-echo "hola" | copy
-cd .local/xdg-ninja/
-./xdg-ninja.sh 
-nvim .bashrc 
-mv .Xauthority tmp 
-display-buttons 
-display-coords 
-xclip -in
-echo "HI" | xclip -in
-xclip -out
-xclip -out | xclip -selection clipboard
-echo "FFFF" | xclip -selection clipboard
-xclip -selection clipboard "hi"
-nvim bash_aliases 
-curl qrenco.de/google.com
-pwd
-nvim template 
-cd
-cd stuff/templates/
-cp bash dash
-mv bash bash2
-rm bash2 bash
-ls
-cp dash bash
-nvim dash 
-g_
-template -dash qr
-nvim qr
-nvim dash 
-template -dash qr
-nvim qr
-volume up
-_
-cbonsai 
-g_
-tree
-cd screenshots/
-peek
+cd stuff/bacup/
+l
 ..
-cd wall/
+cd .local/bin/
+mv nvim nvim.old
+sudo pacman -Syu neovim
 ls
-peek orange.png 
-pwd
-nvim dash 
-template -dash qr
-nvim qr
-nvim screenshot 
 g_
-cd screenshots/
-sl
+nvim
+echo $LANG 
+cat /etc/locale.conf 
+cat /etc/locale.gen
+cat /etc/locale.gen | grep -E "^[^#]"
+sudo locale-gen
+nvim .bashrc 
+locale
 ls
-ls -l
-mv 2024-07-19_19-55-43.png ../../.dotfiles/img/setup.png
+which nvim
+nvim -v
+g_
+nvim
+g_
+nvim
+g:
+g_
+nvim
+time nvim +q
+vim
+nvim
+g_
+nvim
+cd .local/xdg-ninja/
+�ls
+./xdg-ninja.sh 
+man vim
+ls
+cat /etc/locale.gen
+cat /etc/locale.gen | grep -E "^[^#]"
+sudo locale-gen
+locale
+which nvim
+nvim -v
+g_
+nvim
+g_
+nvim
+cat .Xauthority 
+rm .Xauthority 
+echo $XDG_CONFIG_HOME 
+mkdir .config/python/
+mkdir .config/python
+nvim .config/python/pythonrc 
+rm .python_history 
+nvim .bashrc 
+mv .docker .config/docker
+nvim .config/vim/vimrc 
+fg
+vim
+cd
+rm .viminfo 
+ls
+time nvim +q
+time vim +q
+nvim tmp.lua 
+nvim .config/vim/vimrc 
+nvim .config/vim/vimrc 
+fg
+vim
+vim test 
+vim
+fg
+vim
+vim test 
+vim
+nvim tmp
+nvim test 
+rm test 
+rm .viminfo 
+cat tmp.lua 
+rm tmp.lua 
+ls
+man sp
+g_
+ls
+rm bash_history-01*
+nvim bash_*
+g_
+ls
+nvim
+tittle 
+tittle -
+true | tittle -
+nvim bash_*
+g_
+cd vim/
+ls
+echo $PATH 
+cd
+nvim .bashrc 
+nvim .bashrc 
+man curl
+A=https://github.com/LunarVim/Launch.nvim/blob/master/lua/user/keymaps.lua
+curl -s "http://tinyurl.com/api-create.php?url=$A"
+g_
+template -dash short_url
+nvim short_url vim/tittle 
+fg
+g_
+ls
+mv short_url sort_url
+g.
+g_
+ls
+mv sort_url short_url
+g_
+nvim
+curl -s "http://tinyurl.com/api-create.php?url=$A"
+template -dash short_url
+nvim short_url vim/tittle 
+mv short_url sort_url
+g.
+mv sort_url short_url
+nvim
+g_
+short_url https://github.com/LunarVim/Launch.nvim/blob/master/lua/user/keymaps.lua
+echo https://github.com/LunarVim/Launch.nvim/blob/master/lua/user/keymaps.lua | short_url 
+fg
+ls
+nvim .todo 
+todo
+nvim short_url 
+pop

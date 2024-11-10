@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+[ -n "${1:-}" ] \
+    && URL="$1" \
+    || URL="$(cat)" # pipe
+
+curl -s "http://tinyurl.com/api-create.php?url=$URL"
+echo ""

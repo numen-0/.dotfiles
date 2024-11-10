@@ -1,0 +1,4 @@
+#!/bin/sh
+# pop a new st instance in the same pwd
+
+(st -e bash -c "cd $(pwd) && pwd && exec bash" &)

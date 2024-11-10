@@ -84,9 +84,18 @@ return {
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local lspconfig = require("lspconfig")
-        -- Add each lsp I have enabled
-        lspconfig["clangd"].setup({
-            capabilities = capabilities
-        })
+        local servers = {
+            "lua_ls",
+            "clangd",
+            "bashls",
+            "basedpyright",
+            "cssls",
+            "html",
+        }
+        for _, lsp in ipairs(servers) do
+            lspconfig[lsp].setup({
+                capabilities = capabilities,
+            })
+        end
     end,
 }

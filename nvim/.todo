@@ -2,10 +2,15 @@
  ┃ ┃ ┃┃ ┃┃ ┃
  ┻ ┗━┛┻━┛┗━┛
 conf.:
-[_] mappings fix
-    [_] '<leader> ', return to cursor position after change (save mark of local pos and return, cool stuff)
 [_] snips
-    [_] c
     [_] bash
-lsp:
-[_] html, css, js
+plugs:
+[_] lumberjack
+[_] text emoji (u.u)
+[_] scratch (global/local scratch files)
+[_] hop (harpoon like hooping plug)
+learn:
+[_] jump list
+?:
+[_] compile and exec program functionallity, check how
+[_] vim sessions

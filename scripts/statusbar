@@ -3,87 +3,73 @@
 #     https://lecorbeausvault.wordpress.com/2020/09/28/statusbar-sh-simple-shell-script-for-dwms-bar/
 #     https://www.reddit.com/r/archlinux/comments/k7ynny/dwm_status_bar_script_for_only_displaying_battery/
 
-prev="-1"
+# set -v
+set -eu
+
+bat_prev=-1
 bat_state=""
+BATTERY_STR=""
 battery() {
     cap="$(cat "/sys/class/power_supply/BAT0/capacity")"
     state="$(cat "/sys/class/power_supply/BAT0/status")"
 
-    if [ "$prev" = "$cap" ] && [ "$bat_state" = "$state" ]; then
-        echo "$BATTERY_STR"
-        return;
-    fi
-    prev="$cap"
+    [ "$bat_prev" -eq "$cap" ] && [ "$bat_state" = "$state" ] && return 0
+
+    bat_prev="$cap"
     bat_state="$state"
 
     if [ "$state" = "Charging" ]; then
-        [ "$BRIGHTNESS" = "low" ] && sudo brightness norm && BRIGHTNESS="norm"
-        [ "$cap" = 100 ] && herbe "󰁹 full battery" "$cap%" &
+        if [ "$BRIGHTNESS" = "low" ]; then
+            sudo brightness norm
+            BRIGHTNESS="norm"
+        fi
 
         BATTERY_STR="󰂄 $cap%"
     elif [ "$cap" -ge 90 ]; then
+        if [ "$cap" -eq 100 ]; then
+            (herbe "󰁹 full battery" "$cap%" &)
+        fi
+
         BATTERY_STR="󰁹 $cap%"
     elif [ "$cap" -ge 70 ]; then
         BATTERY_STR="󰂀 $cap%"
     elif [ "$cap" -ge 50 ]; then
         BATTERY_STR="󰁾 $cap%"
-    elif [ "$cap" -ge 20 ]; then
+    elif [ "$cap" -ge 15 ]; then
         BATTERY_STR="󰁻 $cap%"
     else
-        [ "$BRIGHTNESS" = "norm" ] && sudo brightness low && BRIGHTNESS="low"
+        if [ "$BRIGHTNESS" = "norm" ]; then
+            sudo brightness low
+            BRIGHTNESS="low"
+        fi
 
-        herbe "󰂃 low battery" "$cap%" &
+        (herbe "󰂃 low battery" "$cap%" &)
         BATTERY_STR="󰂃 $cap%"
     fi
-    echo "$BATTERY_STR"
 }
 
-usbmon() {
-	usb1=$(lsblk -la | awk '/sdc1/ { print $1 }')
-	usb1mounted=$(lsblk -la | awk '/sdc1/ { print $7 }')
-
-	if [ "$usb1" ]; then
-		if [ -z "$usb1mounted" ]; then
-			echo " |"
-		else
-			echo " $usb1 |"
-		fi
-	fi
-}
-
-fsmon() {
-	ROOTPART=$(df -h | awk '/\/$/ { print $3}') 
-	HOMEPART=$(df -h | awk '/\/home/ { print $3}') 
-	SWAPPART="$(awk '/\// { print $4 }' /proc/swaps)"
-
-	echo "   $ROOTPART    $HOMEPART    $SWAPPART"
-}
-
-ram() {
-    mem="$(free -h --giga | awk '/Mem:/ { print $3 "/" $4 }')"
-	echo "  $mem"
-}
-
-read -r cpu a b c previdle rest < /proc/stat
-prevtotal=$((a+b+c+previdle))
-cpu() {
-	read -r cpu a b c idle rest < /proc/stat
-	total=$((a+b+c+idle))
-	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    prevtotal=total
-    previdle=idle
-	echo "  ${cpu}%"
-}
+# usbmon() {
+# 	usb1=$(lsblk -la | awk '/sdc1/ { print $1 }')
+# 	usb1mounted=$(lsblk -la | awk '/sdc1/ { print $7 }')
+#
+# 	if [ "$usb1" ]; then
+# 		if [ -z "$usb1mounted" ]; then
+# 			echo " |"
+# 		else
+# 			echo " $usb1 |"
+# 		fi
+# 	fi
+# }
 
 network() {
 	conntype=$(ip route | awk '/default/ { print substr($5,1,1) }')
 
 	if [ -z "$conntype" ]; then
-		echo "󰤯 "
+		echo "󰤯  disconected"
 	elif [ "$conntype" = "e" ]; then
 		echo " "
 	elif [ "$conntype" = "w" ]; then
-		echo "󰤨 "
+        echo "󰤨  $(nmcli | grep -F "wlo1: connected to" | cut -d ' ' -f 4)"
 	fi
 }
 
@@ -99,88 +85,82 @@ volume_pa() {
 		elif [ "$vol" -ge 40 ]; then
 			echo "  $vol%"
 		elif [ "$vol" -ge 0 ]; then
-			echo "  $vol%"	
+			echo "  $vol%"
 		fi
 	fi
 
 }
 
+VOLUME_STR=""
 volume_alsa() {
-	mono=$(amixer -M sget Master | grep Mono: | awk '{ print $2 }')
+    muted=$(amixer -M sget Master | awk 'FNR == 6 { print $6 }')
+    vol=$(amixer -M sget Master | awk 'FNR == 6 { print $5 }' | sed 's/[][]//g; s/%//g')
 
-	if [ -z "$mono" ]; then
-		muted=$(amixer -M sget Master | awk 'FNR == 6 { print $6 }' | sed 's/[][]//g')
-		vol=$(amixer -M sget Master | awk 'FNR == 6 { print $5 }' | sed 's/[][]//g; s/%//g')
-	else
-		muted=$(amixer -M sget Master | awk 'FNR == 6 { print $6 }' | sed 's/[][]//g')
-		vol=$(amixer -M sget Master | awk 'FNR == 6 { print $5 }' | sed 's/[][]//g; s/%//g')
-	fi
-
-	if [ "$muted" = "off" ]; then
-		echo "󰝟"
+	if [ "$muted" = "[off]" ]; then
+		VOLUME_STR="󰝟"
 	else
 		if [ "$vol" -ge 65 ]; then
-			echo "  $vol%"
+			VOLUME_STR="  $vol%"
 		elif [ "$vol" -ge 40 ]; then
-			echo "  $vol%"
-		elif [ "$vol" -ge 0 ]; then
-			echo "  $vol%"	
+			VOLUME_STR="  $vol%"
+		# elif [ "$vol" -ge 0 ]; then
+        else
+			VOLUME_STR="  $vol%"
 		fi
 	fi
 }
 
-backlight() {
-    BRIGHTNESS_DIR="/sys/class/backlight/intel_backlight"
-    max="$(cat "$BRIGHTNESS_DIR/max_brightness")"
-    brightness="$(cat "$BRIGHTNESS_DIR/brightness")"
-
-    echo "󰃠  $((brightness * 100 / max))%"
-}
+# backlight() {
+#     BRIGHTNESS_DIR="/sys/class/backlight/intel_backlight"
+#     max="$(cat "$BRIGHTNESS_DIR/max_brightness")"
+#     brightness="$(cat "$BRIGHTNESS_DIR/brightness")"
+#
+#     echo "󰃠  $((brightness * 100 / max))%"
+# }
 
 day() {
     date +"%a, %d %b."
 }
 
 clock() {
-	# dte=$(date +"%D")
-	# time=$(date +"%H:%M")
-
-	# echo " $dte  $time"
-	date +"%H:%M"
+	date +"%H:%M" # 
 }
 
 ###############################################################################
-VOLUME_STR=""
-BRIGHTNESS_STR=""
-BATTERY_STR=""
+# BRIGHTNESS_STR=""
 
-update() {
-    xsetroot -name " $(clock) ; $(ram) | $(cpu) | $(network) | $BRIGHTNESS_STR | $VOLUME_STR | $(battery) | $(day) "
+update_bar() {
+    battery
+    # xsetroot -name " $(clock) ; $BRIGHTNESS_STR | $VOLUME_STR | $(battery) | $(network) | $(day) "
+    xsetroot -name " $(clock) ;| $VOLUME_STR | $BATTERY_STR | $(network) | $(day) "
 }
+
+# to much many lot of problems from this...
 volumen_change() {
-    VOLUME_STR="$(volume_alsa)"
+    volume_alsa
+    main_loop
 }
-brightness_change() {
-    BRIGHTNESS_STR="$(backlight)"
-}
-trap 'volumen_change'    USR1
-trap 'brightness_change' USR2
+# brightness_change() {
+#     BRIGHTNESS_STR="$(backlight)"
+# }
+trap volumen_change    USR1
+# trap brightness_change USR2
 
-main() {
+main_loop() {
 	while true; do
-        update
+        update_bar
 		sleep 60 &
-        wait $!
+        wait "$!"
 	done
 }
 
 ###############################################################################
-
-[ "$(cat "/sys/class/power_supply/BAT0/capacity")" -ge 20 ] && \
-    BRIGHTNESS="norm" || BRIGHTNESS="low"
+[ "$(cat /sys/class/power_supply/BAT0/capacity)" -ge 15 ] \
+    && BRIGHTNESS="norm" \
+    || BRIGHTNESS="low"
 sudo brightness "$BRIGHTNESS"
 
 volumen_change
 # brightness_change
-main
 
+main_loop

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 OPTIONS="  sing_out\n  lock\n  shutdown\n  reboot\n" # 󰤄           
 SELECTOR="dmenu -c -l $(printf "%b" "$OPTIONS" | wc -l)"
 

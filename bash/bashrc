@@ -15,6 +15,7 @@ esac
 ## path #######################################################################
 [ -d "$HOME/.local/bin" ]     && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/scripts" ] && PATH="$HOME/.local/scripts:$PATH"
+[ -d "$HOME/.local/scripts/vim" ] && PATH="$HOME/.local/scripts/vim:$PATH"
 
 [ -f "$HOME/.config/bash/bash_functions" ] \
     && . "$HOME/.config/bash/bash_functions"
@@ -27,7 +28,10 @@ esac
 ## config #####################################################################
 # export
 export EDITOR="nvim"
+export VISUAL="nvim"
 export BROWSER="firefox"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # color
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
@@ -67,11 +71,12 @@ fi
 
 # bind
 bind "set completion-ignore-case on"
+bind '"\C-g":"fg\n"'
 
 # hist
 HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=2000
-HISTFILESIZE=2000
+# HISTFILESIZE=2000
 
 # $home clean
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -81,8 +86,12 @@ export XDG_CACHE_HOME="$HOME/.local/cache"
 
 alias xbindkeys='xbindkeys -f $XDG_CONFIG_HOME/xbindkeys/config'
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 alias wget='wget --hsts-file $XDG_DATA_HOME/.wget-hsts'
 export HISTFILE="$HOME/.config/bash/bash_history"
@@ -100,3 +109,20 @@ unset -f change_term_name
 # hello
 echo "( ·_·)b"
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/numen/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/numen/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/numen/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/numen/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+conda deactivate

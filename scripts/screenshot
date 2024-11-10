@@ -15,14 +15,14 @@ RESULT="${RESULT##* }"
 [ -z "$RESULT" ] && exit
 
 if [ "$RESULT" = "screen" ]; then
-    sleep 0.25 && $SCROT && { herbe "  screenshot" "saved, $PIC_FILE" & } &
+    sleep 0.25 && $SCROT && ( herbe "  screenshot" "saved, $PIC_FILE" &) &
 elif [ "$RESULT" = "section" ]; then
     $SCROT --freeze --select --line "mode=edge,color=#007755,width=2" && \
-        { herbe "  screenshot" "saved, $PIC_FILE" & }
+        ( herbe "  screenshot" "saved, $PIC_FILE" & )
 elif [ "$RESULT" = "window" ]; then
     WID=$(xdotool selectwindow)
 
     [ "$WID" ] && $SCROT --window "$WID" && \
-        { herbe "  screenshot" "saved, $PIC_FILE" & }
+        ( herbe "  screenshot" "saved, $PIC_FILE" & )
 fi
 

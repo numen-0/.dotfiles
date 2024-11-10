@@ -1,16 +1,22 @@
 #!/bin/sh
 
 TEMPLATE_DIR="$(grep "TEMPLATES" /home/numen/.config/user-dirs.dirs | sed -e "s/^.*=\"//;s/\"//" | sed -e "s|\$HOME|$HOME|")"
-SUPPORTED="-bash, -dash, -todo"
+SUPPORTED="-bash, -dash, -todo, -gpl -bob"
 
-
-[ -z "$1" ] && echo "templates: I only need a file type, and file name" 1>&2 && exit 1
-[ -z "$2" ] && echo "templates: I only need a file type, and file name" 1>&2 && exit 1
-[ -f "$2" ] && echo "templates: file already exist '$2'" 1>&2 && exit 1
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: templates TYPE FILE" 1>&2
+    echo "Types: $SUPPORTED" 1>&2
+    exit 1
+elif [ -f "$2" ]; then
+    echo "templates: file already exist '$2'" 1>&2
+    exit 1
+fi
 
 case "$1" in
     -bash) cp "$TEMPLATE_DIR/bash" "$2" && chmod +x "$2";;
     -dash) cp "$TEMPLATE_DIR/dash" "$2" && chmod +x "$2";;
+    -bob)  cp "$TEMPLATE_DIR/bob" "$2";;
+    -gpl)  cp "$TEMPLATE_DIR/gpl-3.0.txt" "$2";;
     -todo) cp "$TEMPLATE_DIR/.todo" "$2";;
     *) echo "no template for '$1' (suported: $SUPPORTED)" && exit 1 ;;
 esac
