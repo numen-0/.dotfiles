@@ -29,7 +29,7 @@ return {
                 "vim",
                 "vimdoc",
             },
-            -- incremental_selection = { -- I dont use this
+            -- incremental_selection = {
             --     enable = true,
             --     keymaps = {
             --         init_selection = "gnn",

@@ -1,0 +1,74 @@
+#!/bin/sh
+# generates titles (79 chars wide) from either pipe or arguments, line by line:
+# Usage:
+#   - Piped input: cat title.txt | ./script.sh style_file mode
+#   - Arguments: ./script.sh "Title Text" style mode
+# Arguments:
+#   $1: style char, FileType or file extension (main.py, c, lua, #) (def. -)
+#   $2: display mode {0, 1, 2};                                     (def. 0)
+
+set -eu
+
+# Read from stdin if piped; otherwise, use $1 for TEXT
+if [ -t 0 ]; then
+    cmd_='echo '${1:-}
+    shift
+else
+    cmd_='cat'
+fi
+style="${1:--}"
+mode="${2:-0}"
+
+case "$style" in
+    *.h|*.c|c) # in vim you can do % and pass the name of the buffer
+        BDR_CHAR="/"
+        CHAR="*"
+        ;;
+    *.lua|lua)
+        BDR_CHAR="-"
+        CHAR="-"
+        ;;
+    *.py|*.sh|python|bash|sh)
+        BDR_CHAR="#"
+        CHAR="#"
+        ;;
+    *)
+        CHAR="$style"
+        BDR_CHAR="$CHAR"
+        ;;
+esac
+
+no_text="$BDR_CHAR$(printf "%77s" " " | tr " " "$CHAR")$BDR_CHAR"
+$cmd_ | while IFS= read -r line || [ -n "$line" ]; do
+    if [ -z "$line" ]; then
+        echo "$no_text"
+        continue
+    fi
+
+    n=${#line}
+    if [ "$n" -gt 75 ]; then
+        echo "$BDR_CHAR$CHAR $line"
+        continue;
+    fi
+    case "$mode" in
+        0)
+            echo "$BDR_CHAR$CHAR $line $(printf "%$((77 - n - 4))s" |\
+                tr " " "$CHAR")$CHAR$BDR_CHAR"
+            ;;
+        1)
+            left_pad=$(( (77 - n - 4) / 2 ))
+            right_pad=$(( (77 - n - 4) / 2 + (1 + n) % 2 ))
+            echo "$BDR_CHAR$CHAR$(printf "%${left_pad}s" |\
+                tr " " "$CHAR") $line $(printf "%${right_pad}s" |\
+                tr " " "$CHAR")$CHAR$BDR_CHAR"
+            ;;
+        2)
+            echo "$BDR_CHAR$CHAR$(printf "%$((77 - n - 4))s" |\
+                tr " " "$CHAR") $line $CHAR$BDR_CHAR"
+            ;;
+        *)
+            echo "Invalid mode: choose from {0, 1, 2}"
+            exit 1
+            ;;
+    esac
+done

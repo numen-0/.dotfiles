@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+command -v herbe >/dev/null || {
+    echo "weather: 'herbe' is not installed" >&2
+    exit 1
+}
+
+location="$(echo "${1:-bilbao}" |\
+    sed -E 's/\b([a-zA-Z])([a-zA-Z]*)/\U\1\L\2/g')"
+OUT=$(curl -s "wttr.in/${location}?0QT" || {
+    echo "weather: failed to fetch data for '${location}'" >&2
+    exit 1
+})
+
+if echo "$OUT" | grep -Fq "404 UNKNOWN LOCATION:"; then
+    echo "weather: unknown location '${location}'" >&2
+    exit 1
+fi
+
+herbe "$location" "$OUT" &

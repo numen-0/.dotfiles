@@ -1,0 +1,15 @@
+#!/bin/sh
+# Format input text into aligned columns.
+#
+# Usage:
+#   - Piped Input:    cat test.txt | calign 
+#   - Argument Input: calign "Your Title Text"
+
+set -eu
+
+if [ -t 0 ]; then
+    echo "${*:-}" | column -t -s ' ' | sed "s/\(\S\) /\1/g"
+else
+    sed "s/\s*$//;s/\s\+/ /g" | column -t -s ' ' | sed "s/\(\S\) /\1/g"
+fi
+

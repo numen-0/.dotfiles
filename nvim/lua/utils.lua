@@ -5,7 +5,7 @@ local M = {}
 ---@param  hl   string
 ---@param  link string
 ---@param  opts table?
----@return boolean
+---@return boolean err
 M.gen_hl_from_link = function(hl, link, opts)
     link = vim.api.nvim_get_hl(0, { name = link })
 
@@ -15,11 +15,50 @@ M.gen_hl_from_link = function(hl, link, opts)
     end
 
     if opts then
-        for k, v in pairs(opts) do link[k] = v end
+        link = vim.tbl_extend("force", link, opts)
     end
 
     vim.api.nvim_set_hl(0, hl, link)
     return true
+end
+
+-------------------------------------------------------------------------------
+
+-- src: https://github.com/craftzdog/dotfiles-public/blob/master/.config/nvim/lua/craftzdog/discipline.lua
+M.cowboy = function()
+    ---@type table?
+    local id
+    local ok = true
+    for _, key in ipairs({ "h", "j", "k", "l", "+", "-" }) do
+        local count = 0
+        local timer = assert(vim.loop.new_timer())
+        local map = key
+        vim.keymap.set("n", key, function()
+            if vim.v.count > 0 then
+                count = 0
+            end
+            if count >= 10 then
+                ok, id = pcall(vim.notify, "Hold it Cowboy!  ",
+                    vim.log.levels.WARN, {
+                        icon = "",
+                        replace = id,
+                        keep = function()
+                            return count >= 10
+                        end,
+                    })
+                if not ok then
+                    id = nil
+                    return map
+                end
+            else
+                count = count + 1
+                timer:start(2000, 0, function()
+                    count = 0
+                end)
+                return map
+            end
+        end, { expr = true, silent = true })
+    end
 end
 
 -------------------------------------------------------------------------------
@@ -31,14 +70,14 @@ local get_str = function(v)
         return vim.inspect(v)
     end
 end
-local helper = function(f)
+local p = function(f)
     return function(v)
         f(get_str(v)); return v
     end
 end
-P = helper(print)
-N = helper(vim.notify)
-E = helper(vim.api.nvim_err_writeln)
+P = p(print)
+N = p(vim.notify)
+E = p(vim.api.nvim_err_writeln)
 
 T = function(fun, ...)
     local start_time = os.clock()
@@ -53,18 +92,6 @@ T = function(fun, ...)
     return result
 end
 
-R = function(module)
-    package.loaded[module] = nil
-
-    -- clear any submodules if your plugin has them
-    for k in pairs(package.loaded) do
-        if k:match('^' .. module) then
-            package.loaded[k] = nil
-        end
-    end
-    vim.notify("reloaded")
-    return require(module)
-end
 U = function(module)
     package.loaded[module] = nil
 
@@ -75,11 +102,16 @@ U = function(module)
         end
     end
 end
+R = function(module)
+    U(module)
+    return require(module)
+end
 
 RR = function()
-    R("lumberjack").setup({})
-    R("beta").setup({})
-    -- R("myplugs.comment-blocks").setup({})
+    -- R("lumberjack").setup({})
+    -- R("glide").setup({})
+    R("sketch").setup({})
+    vim.notify("plugins reloaded")
 end
 
 -------------------------------------------------------------------------------
@@ -88,5 +120,6 @@ M.reload = R
 M.unload = U
 
 require("mappings").map2('n', '<leader>rl', RR, { noremap = true })
+require("mappings").map2('n', '<leader>S', ':source %<cr>', { noremap = true })
 
 return M

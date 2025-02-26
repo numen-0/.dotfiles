@@ -1,8 +1,15 @@
 #!/bin/sh
+
+set -eu
+
 TODO_FILE="$(bfind .todo | head -n 1)"
 
 superp_print() {
-    printf "%b\n" "$(sed "s/\s\+$//;/^\s*$/d;s|^.|\\\033[0;1m&|;s|\[X\]|  \\\033[0;2;9m|;s|\[_\]|  \\\033[0m|;s|$| |" "$1")"
+    printf "%b\n" "$(sed -e "s/\s\+$//" \
+                         -e "/^\s*$/d" \
+                         -e "s|^\(\s*\)\[[xX]\] \(.*\)$|\1  \\\e[0;2;9m \2 \\\e[0m|" \
+                         -e "s|^\(\s*\)\[.\]|\1  |" \
+                         -e "s|^\(\S.*\):|\\\e[1m\1\\\e[0m:|" "$1")"
 }
 
 [ -f "$TODO_FILE" ] && superp_print "$TODO_FILE" && exit 0

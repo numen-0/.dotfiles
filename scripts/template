@@ -1,23 +1,62 @@
 #!/bin/sh
 
-TEMPLATE_DIR="$(grep "TEMPLATES" /home/numen/.config/user-dirs.dirs | sed -e "s/^.*=\"//;s/\"//" | sed -e "s|\$HOME|$HOME|")"
-SUPPORTED="-bash, -dash, -todo, -gpl -bob"
+set -eu
 
-if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Usage: templates TYPE FILE" 1>&2
+vebose=true
+
+SRC_DIR="$XDG_TEMPLATES_DIR"
+SUPPORTED="-bash, -bob, -c, -clang-format, -dash, -gpl, -gpl-notice, -stb, -todo,"
+DEST=""
+MOD="__MODULE__"
+MDEST="__FILE__"
+
+if [ -z "${1:-}" ]; then
+    echo "Usage: template -TYPE [FILE]" 1>&2
+    echo "       if FILE is not given a default name will be used" 1>&2
     echo "Types: $SUPPORTED" 1>&2
-    exit 1
-elif [ -f "$2" ]; then
-    echo "templates: file already exist '$2'" 1>&2
     exit 1
 fi
 
+if [ -z "${2:-}" ]; then    # default names
+    case "$1" in
+        -bash)          DEST="bash.sh";;
+        -bob)           DEST="bob";;
+        -c)             DEST="main.c";;
+        -clang-format)  DEST=".clang-format";;
+        -dash)          DEST="dash.sh";;
+        -gpl)           DEST="LICENSE";;
+        -gpl-notice)    cat "$SRC_DIR/gpl-notice-3.0.txt" && exit 0 || exit 1;;
+        -stb)           DEST="stb.h";;
+        -todo)          DEST=".todo";;
+    *) echo "template: no template for '$1' (suported: $SUPPORTED)" && exit 1 ;;
+    esac
+    $vebose && echo "template: default name selected '$DEST'"
+else
+    DEST="$2"
+
+    if [ "$1" = "-stb" ]; then
+        MDEST="$(basename "$DEST")"
+        # MOD="$(echo "${DEST%.h}" | tr '[:lower:]' '[:upper:]' | tr '.' '_')"
+        MOD="$(basename "${DEST%.h}" | tr '[:lower:]' '[:upper:]' | tr '.' '_')"
+    fi
+fi
+
+if [ -f "$DEST" ]; then
+    echo "template: file already exist '$DEST', delete it firts" 1>&2
+    exit 1
+fi
+
+if $vebose; then f="-v"; else f=""; fi
 case "$1" in
-    -bash) cp "$TEMPLATE_DIR/bash" "$2" && chmod +x "$2";;
-    -dash) cp "$TEMPLATE_DIR/dash" "$2" && chmod +x "$2";;
-    -bob)  cp "$TEMPLATE_DIR/bob" "$2";;
-    -gpl)  cp "$TEMPLATE_DIR/gpl-3.0.txt" "$2";;
-    -todo) cp "$TEMPLATE_DIR/.todo" "$2";;
-    *) echo "no template for '$1' (suported: $SUPPORTED)" && exit 1 ;;
+    -bash)          cp $f "$SRC_DIR/bash" "$DEST" && chmod +x "$DEST";;
+    -bob)           cp $f "$SRC_DIR/bob" "$DEST";;
+    -c)             cp $f "$SRC_DIR/main.c" "$DEST";;
+    -clang-format)  cp $f "$SRC_DIR/.clang-format" "$DEST";;
+    -dash)          cp $f "$SRC_DIR/dash" "$DEST" && chmod +x "$DEST";;
+    -gpl)           cp $f "$SRC_DIR/gpl-3.0.txt" "$DEST";;
+    -gpl-notice)    cp $f "$SRC_DIR/gpl-notice-3.0.txt" "$DEST";;
+    -stb)           sed "s/__MODULE__/$MOD/g;s/__FILE__/$MDEST/g" "$SRC_DIR/stb.h" > "$DEST";;
+    -todo)          cp $f "$SRC_DIR/.todo" "$DEST";;
+    *) echo "template: no template for '$1' (suported: $SUPPORTED)" && exit 1 ;;
 esac
 

@@ -1,6 +1,6 @@
 local M = {}
 
--- NOTE: uhenever we add new mappings (using this module), we can perform a
+-- NOTE: whenever we add new mappings (using this module), we can perform a
 --       quick check of any overrides.
 M.check = false
 M.maps  = {}
@@ -62,41 +62,27 @@ end
 -- MAPPINGS -------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- For each new mapping you add, try to delete or simplify an existing one ----
--- or comment out any mappings you don't use ----------------------------------
+-- also comment out any mappings you don't use --------------------------------
 -- [Sources] ------------------------------------------------------------------
 -- linuxdabble:  https://gitlab.com/linuxdabbler/dotfiles/-/blob/main/.config/nvim/init.lua?ref_type=heads
 -- ThePrimeagen: https://github.com/ThePrimeagen/init.lua/tree/249f3b14cc517202c80c6babd0f9ec548351ec71
 -- Launch.nvim: https://github.com/LunarVim/Launch.nvim/blob/master/lua/user/keymaps.lua
 -------------------------------------------------------------------------------
 
+local s_opt = { silent = true }
+
 -- [Split] --------------------------------------------------------------------
--- generation
--- M.map("n", "<leader>o", ":on <CR>")                                    -- make the current window the [O]nly one on the screen | there's also <C-w>o
--- <C-w>h = :vsplit | <C-w>s = :split
--- M.map("n", "<leader>v", ":vsplit<CR>")                                 -- [V]eritcal split == <C-w>v
--- M.map("n", "<leader>V", ":split<CR>")                                  -- horizontal split
--- M.map("n", "<leader>t", ":vsplit term://bash<CR><CMD>startinsert<CR>") -- veritcal [T]erminal
--- M.map("n", "<leader>T", ":split term://bash<CR><CMD>startinsert<CR>")  -- horizontal [T]erminal
--- M.map("t", "<C-t>", "<C-\\><C-n>:bd!<CR>")                             -- delete current [T]erminal
-
--- navigation
--- M.map("n", "<C-h>", "<C-w>h") -- switches to left split
--- M.map("n", "<C-l>", "<C-w>l") -- switches to right split
--- M.map("n", "<C-j>", "<C-w>j") -- switches to bottom split
--- M.map("n", "<C-k>", "<C-w>k") -- switches to top split
-
 -- adjust sizes
-M.map("n", "<C-Left>",  ":vertical resize +3<CR>")   -- resize vertical split +
-M.map("n", "<C-Right>", ":vertical resize -3<CR>")   -- resize vertical split -
-M.map("n", "<C-Up>",    ":horizontal resize +3<CR>") -- resize horizontal split +
-M.map("n", "<C-Down>",  ":horizontal resize -3<CR>") -- resize horizontal split -
+M.map("n", "<C-Left>", ":vertical resize +3<CR>", s_opt)   -- resize vertical split +
+M.map("n", "<C-Right>", ":vertical resize -3<CR>", s_opt)  -- resize vertical split -
+M.map("n", "<C-Up>", ":horizontal resize +3<CR>", s_opt)   -- resize horizontal split +
+M.map("n", "<C-Down>", ":horizontal resize -3<CR>", s_opt) -- resize horizontal split -
 
 
 -- [Buffers] ------------------------------------------------------------------
-M.map("n", "<Tab>", ":bnext <CR>")       -- next buffer (in :buffers)
--- M.map("n", "<S-Tab>", ":bprevious <CR>") -- previous buffer (in :buffers)
-M.map("n", "<S-Tab>", ":b #<CR>")        -- previous buffer
-M.map("n", "<leader>bd", ":bd <CR>")     -- [D]elets current [B]uffer
+M.map("n", "<Tab>", ":bnext <CR>", s_opt)   -- next buffer (in :buffers)
+M.map("n", "<S-Tab>", ":b #<CR>", s_opt)    -- previous buffer
+M.map("n", "<leader>bd", ":bd <CR>", s_opt) -- [D]elets current [B]uffer
 
 
 -- [Edit] ---------------------------------------------------------------------
@@ -113,37 +99,14 @@ M.map("n", "J", "mzJ`z") -- [J]oin lines but dont move the cursor
 
 -- highligh
 -- M.map("n", "<leader>h", ":set hlsearch!<CR>") -- togle [H]ighligh
-M.map("n", "<leader>h", ":noh<CR>") -- switch of [H]ighligh
+M.map("n", "<leader>h", ":noh<CR>", s_opt) -- switch of [H]ighligh
 
 -- text editing
-M.map2({ "v", "n" }, "<leader>s", "mz:s/\\s\\+$//e<CR>`z")                        -- delete trailing [S]paces
--- M.map("n", "<leader>;", ":s/\\%(;$\\)\\@!\\(.\\)$/\\1;/e<CR>:set nohlsearch<CR>") -- add ';' at the end
-M.map("n", "<leader>ff", [[/\<<C-r><C-w>\>]])                                     -- [F]Ind all instance of word under cursor
-M.map("v", "<leader>ff", '"hy/<C-r>h')                                            -- [F]ind all instance of highlighted words
-M.map("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])  -- [R]eplace all instance of word under cursor
-M.map("v", "<leader>rr", '"hy:%s/<C-r>h//g<left><left>')                          -- [R]eplace all instance of highlighted words
-
--- surround (  ._.)
--- M.map("v", 'cs"', 'c"<C-r><C-o>\""<ESC>`<l')     -- [S]urround "word"
--- M.map("v", "cs'", "c'<C-r><C-o>\"'<ESC>`<l")     -- [S]urround 'word'
--- M.map("v", "cs(", "c(<C-r><C-o>\")<ESC>`<l")     -- [S]urround (word)
--- M.map("v", "cs)", "c(<C-r><C-o>\")<ESC>`<l")     -- [S]urround (word)
--- M.map("v", "cs[", "c[<C-r><C-o>\"]<ESC>`<l")     -- [S]urround [word]
--- M.map("v", "cs]", "c[<C-r><C-o>\"]<ESC>`<l")     -- [S]urround [word]
--- M.map("v", "cs{", "c{<C-r><C-o>\"}<ESC>`<l")     -- [S]urround {word}
--- M.map("v", "cs}", "c{<C-r><C-o>\"}<ESC>`<l")     -- [S]urround {word}
--- M.map("v", "cs<", "c<<C-r><C-o>\"><ESC>`<l")     -- [S]urround <word>
--- M.map("v", "cs>", "c<<C-r><C-o>\"><ESC>`<l")     -- [S]urround <word>
--- M.map("v", 'cS"', 'c" <C-r><C-o>\" "<ESC>`<ll')  -- [S]urround " word "
--- M.map("v", "cS'", "c' <C-r><C-o>\" '<ESC>`<ll")  -- [S]urround ' word '
--- M.map("v", "cS(", "c( <C-r><C-o>\" )<ESC>`<ll")  -- [S]urround ( word )
--- M.map("v", "cS)", "c( <C-r><C-o>\" )<ESC>`<ll")  -- [S]urround ( word )
--- M.map("v", "cS[", "c[ <C-r><C-o>\" ]<ESC>`<ll")  -- [S]urround [ word ]
--- M.map("v", "cS]", "c[ <C-r><C-o>\" ]<ESC>`<ll")  -- [S]urround [ word ]
--- M.map("v", "cS{", "c{ <C-r><C-o>\" }<ESC>`<ll")  -- [S]urround { word }
--- M.map("v", "cS}", "c{ <C-r><C-o>\" }<ESC>`<ll")  -- [S]urround { word }
--- M.map("v", "cS<", "c< <C-r><C-o>\" ><ESC>`<ll")  -- [S]urround < word >
--- M.map("v", "cS>", "c< <C-r><C-o>\" ><ESC>`<ll")  -- [S]urround < word >
+M.map2({ "v", "n" }, "<leader>s", "mz:s/\\s\\+$//e<CR>`z", s_opt)                -- delete trailing [S]paces
+M.map("n", "<leader>ff", [[/\<<C-r><C-w>\>]])                                    -- [F]Ind all instance of word under cursor
+M.map("v", "<leader>ff", '"hy/<C-r>h')                                           -- [F]ind all instance of highlighted words
+M.map("n", "<leader>rr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- [R]eplace all instance of word under cursor
+M.map("v", "<leader>rr", '"hy:%s/<C-r>h//g<left><left>')                         -- [R]eplace all instance of highlighted words
 
 
 -- [Cool yank/delete/paste] ---------------------------------------------------
@@ -174,12 +137,12 @@ M.map2({ "n", "v" }, "<leader>d", [["_d]]) -- "no register" [D]elete
 
 
 -- [Disable] ------------------------------------------------------------------
-M.map("n", " ",    "<nop>")    -- disable
-M.map("n", "<Up>",    "<nop>") -- disable
-M.map("n", "<Down>",  "<nop>") -- disable
+M.map("n", " ", "<nop>")       -- disable
+M.map("n", "<Up>", "<nop>")    -- disable
+M.map("n", "<Down>", "<nop>")  -- disable
 M.map("n", "<Right>", "<nop>") -- disable
-M.map("n", "<Left>",  "<nop>") -- disable
-M.map("n", "Q",       "<nop>") -- disable
-M.map("i", "<C-c>",   "<Esc>") -- remap/disable
+M.map("n", "<Left>", "<nop>")  -- disable
+M.map("n", "Q", "<nop>")       -- disable
+M.map("i", "<C-c>", "<Esc>")   -- remap/disable
 
 return M

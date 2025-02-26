@@ -76,23 +76,24 @@ local function macro_off()
     macro_register = ""
     M.reload()
 end
-
 local function macro()
     return macro_register
 end
 
 --= norm statusline =========================================================--
-local zenmode = require("myplugs.zenmode")
+local simple_mode = true
 M.norm = function()
     local name_s = filename()
 
-    if zenmode.getZM() then return "%=" .. name_s .. "%=" end
+    if simple_mode then
+        return "%=" .. name_s .. "%="
+    end
 
-    local mode_s  = "[" .. mode() .. "]"
+    local mode_s  = mode()
     local lsp_s   = lsp()
     local info_s  = ruler()
     local macro_s = macro()
-    return "\\ " .. mode_s .. "\\ " .. name_s .. "%r%h\\ " .. lsp_s .. "%=" ..
+    return "\\ [" .. mode_s .. "]\\ " .. name_s .. "%r%h\\ " .. lsp_s .. "%=" ..
            "%S\\ \\ " .. macro_s .. "\\ \\ " .. info_s
 end
 
@@ -107,7 +108,7 @@ local line_map = {
     },
     match = {
         ["term://.*"]   = [[%=%=]],
-        ["lumber://.*"] = [[%=\ %t/\ \ %=]],
+        ["lumber://.*"] = [[%=\ \ %t/\ \ %=]],
     },
 }
 function M.reload()
@@ -134,22 +135,47 @@ function M.reload()
     vim.cmd("set statusline=" .. statusline)
 end
 
+function M.toggle()
+    simple_mode = not simple_mode
+    M.reload()
+end
+function M.simple_mode()
+    simple_mode = true
+    M.reload()
+end
+function M.norm_mode()
+    simple_mode = false
+    M.reload()
+end
+
 --= autocmd =================================================================--
 local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufModifiedSet", "ModeChanged", }, {
-    pattern = { "*" },
+    pattern  = { "*" },
     callback = M.reload,
-    group = group,
+    group    = group,
+    desc     = "Update statusline"
 })
 vim.api.nvim_create_autocmd({ "RecordingLeave" }, {
-    pattern = { "*" },
+    pattern  = { "*" },
     callback = macro_off,
-    group = group,
+    group    = group,
+    desc     = "Update statusline macro_off"
 })
 vim.api.nvim_create_autocmd({ "RecordingEnter" }, {
-    pattern = { "*" },
+    pattern  = { "*" },
     callback = macro_on,
-    group = group,
+    group    = group,
+    desc     = "Update statusline macro_on"
 })
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    pattern  = { "*" },
+    callback = function(_)
+        require("utils").gen_hl_from_link("StatusLineBold", "StatusLine",
+            { bold = true })
+    end,
+    group    = group,
+    desc     = "Reload StatusLineBold hl"
+}); vim.api.nvim_exec_autocmds("ColorScheme", {group = group, pattern = "*"});
 
 return M

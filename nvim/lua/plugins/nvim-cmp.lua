@@ -88,8 +88,12 @@ return {
             "lua_ls",
             "clangd",
             "bashls",
-            "basedpyright",
             "cssls",
+            "html",
+            "jdtls",
+            -- "basedpyright",
+            "pyright",
+            "biome",
             "html",
         }
         for _, lsp in ipairs(servers) do

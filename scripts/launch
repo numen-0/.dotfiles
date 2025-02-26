@@ -1,6 +1,8 @@
 #!/bin/sh
 
-PROGRAMS="  st\n󱝆  surf\n  firefox\n  zathura\n  powermenu\n  screenshot\n  bacup\n"
+set -eu
+
+PROGRAMS="  st\n󱝆  surf\n  firefox\n  zathura\n  powermenu\n  screenshot\n  bacup\n  weather\n"
 SELECTOR="dmenu -c -l $(printf "%b" "$PROGRAMS" | wc -l) $*"
 
 RESULT="$(printf "%b" "$PROGRAMS" | $SELECTOR)"

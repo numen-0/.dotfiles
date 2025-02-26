@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 BRIGHTNESS_DIR="/sys/class/backlight/intel_backlight"
 MAX_BRIGHTNESS_FILE="$BRIGHTNESS_DIR/max_brightness"
 BRIGHTNESS_FILE="$BRIGHTNESS_DIR/brightness"
@@ -8,27 +10,27 @@ BRIGHTNESS="$(cat "$BRIGHTNESS_FILE")"
 NORM_B="70"
 LOW_B="45"
 
-if [ "$1" = "up" ]; then
+if [ "${1:-}" = "up" ]; then
     step="$((MAX_BRIGHTNESS / 20))"
     BRIGHTNESS="$((BRIGHTNESS + step))"
     
     [ "$BRIGHTNESS" -gt "$MAX_BRIGHTNESS" ] && BRIGHTNESS="$MAX_BRIGHTNESS"
 
-elif [ "$1" = "down" ]; then
+elif [ "${1:-}" = "down" ]; then
     step="$((MAX_BRIGHTNESS / 20))"
     BRIGHTNESS="$((BRIGHTNESS - step))"
     
     [ "$BRIGHTNESS" -lt 0 ] && BRIGHTNESS="0"
-elif [ "$1" = "norm" ]; then
+elif [ "${1:-}" = "norm" ]; then
     BRIGHTNESS="$((MAX_BRIGHTNESS * NORM_B / 100))"
-elif [ "$1" = "low" ]; then
+elif [ "${1:-}" = "low" ]; then
     BRIGHTNESS="$((MAX_BRIGHTNESS * LOW_B / 100))"
 else
-    echo "$(basename "$0") up   |> +5% brightness"
-    echo "$(basename "$0") down |> -5% brightness"
-    echo "$(basename "$0") norm |> ${NORM_B}% brightness"
-    echo "$(basename "$0") low  |> ${LOW_B}% brightness"
-    exit
+    echo "$(basename "${0:-brightness}") up   |> +5% brightness"
+    echo "$(basename "${0:-brightness}") down |> -5% brightness"
+    echo "$(basename "${0:-brightness}") norm |> ${NORM_B}% brightness"
+    echo "$(basename "${0:-brightness}") low  |> ${LOW_B}% brightness"
+    exit 1
 fi
 
 echo "$BRIGHTNESS" > "$BRIGHTNESS_FILE"

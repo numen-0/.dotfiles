@@ -1,4 +1,6 @@
 #!/bin/sh
 # pop a new st instance in the same pwd
 
-(st -e bash -c "cd $(pwd) && pwd && exec bash" &)
+set -eu
+
+(st -e bash -c "cd $(pwd) && pwd && exec bash" &) 2>/dev/null 1>/dev/null

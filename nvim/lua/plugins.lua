@@ -3,7 +3,18 @@ return {
         "lukas-reineke/virt-column.nvim",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
-        opts = { char = "▕", }
+        opts = { char = "▕", },
+    },
+    {
+        "smjonas/inc-rename.nvim",
+        lazy = true,
+        event = { 'LspAttach' },
+        opts = {},
+        init = function()
+            vim.keymap.set("n", "<leader>rn", function()
+                return ":IncRename " .. vim.fn.expand("<cword>")
+            end, { expr = true })
+        end
     },
     {
         "numToStr/Comment.nvim",
@@ -24,14 +35,14 @@ return {
             vim.g.undotree_DiffAutoOpen       = false
             vim.g.undotree_HelpLine           = false
             vim.g.undotree_SetFocusWhenToggle = 1
-            require("mappings").map2("n", "<leader>u", vim.cmd.UndotreeToggle) -- TODO: maybe this needs to go down here
+            require("mappings").map2("n", "<leader>u", vim.cmd.UndotreeToggle)
         end,
     },
     {
         "NvChad/nvim-colorizer.lua",
         lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        -- event = "VeryLazy",
+        -- event = { "BufReadPost", "BufNewFile" },
+        ft = { "css", "html", "lua", "vim" },
         opts = {
             filetypes = {
                 css  = { names = true, rgb_fn = true, hsl_fn = true },
@@ -43,7 +54,7 @@ return {
                 names = false,
             },
             buftypes = {},
-        }
+        },
     },
     {
         "RRethy/vim-illuminate",
@@ -98,7 +109,7 @@ return {
     {
         'kwakzalver/duckytype.nvim',
         lazy = true,
-        event = "VeryLazy",
+        cmd = "DuckyType",
         opts = {
             expected = "english_common",
             number_of_words = 60,
@@ -109,18 +120,28 @@ return {
             },
 
             highlight = {
-                good = "Comment",
-                bad = "Error",
-                remaining = "keyword",
+                good      = "Constant",
+                bad       = "DiagnosticError",
+                remaining = "Normal",
             },
-        }
+        },
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        enabled = false,
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
     },
     -- local plugs --
     {
-        dir = "~/stuff/code/magic_macro",
+        dir = "~/stuff/code/magic_macro.nvim",
         enabled = false,
         lazy = true,
-        event = "VeryLazy",
+        ft = { "c" },
         init = function()
             require("autocmds").new("FileType", {
                 callback = function()
@@ -133,16 +154,28 @@ return {
         end,
     },
     {
-        dir = "~/stuff/code/lumberjack",
+        dir = "~/stuff/code/lumberjack.nvim",
         config = function()
             require("lumberjack").setup({})
         end,
     },
     {
-        dir = "~/stuff/code/beta",
+        dir = "~/stuff/code/sketch.nvim",
+        config = function()
+            require("sketch").setup({})
+        end,
+    },
+    {
+        dir = "~/stuff/code/glide.nvim",
+        config = function()
+            require("glide").setup({})
+        end,
+    },
+    {
+        dir = "~/stuff/code/beta.nvim",
         priority = 500,
         opts = {
-            logo = {
+            logo         = {
                 lines = {
                     [[┳┓    ┓┏•    ]],
                     [[┃┃┏┓┏┓┃┃┓┏┳┓ ]],
@@ -150,17 +183,17 @@ return {
                 },
                 align = { offset = 0, style = "center" },
             },
-            text = {
+            text         = {
                 lines = {
                     [["An idiot admires complexity, a genius admires simplicity"]],
                     [[                                            Terry A. Davis]],
                 },
                 align = { offset = 0, style = "center" },
             },
-            gap = 0,
+            gap          = 0,
             user_command = false,
-            hide_cursor = true,
+            hide_cursor  = false,
             unload_after = true,
-        }
+        },
     },
 }

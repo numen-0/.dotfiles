@@ -7,7 +7,7 @@ change_term_name() {
     printf "%b" "\033]0;$1\007";
 }
 parse_git_status() {
-    [ -z "$(git status --porcelain 2> /dev/null)" ] && printf "" || printf "[+]"
+    [ -z "$(git status --porcelain 2> /dev/null)" ] || printf "[+]"
 }
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -26,8 +26,18 @@ toggle() {
         PS1='\[\e[0;92m\] \[\e[0m\]'
     else
         _PS1=true
-        PS1='\[\e[0;1;31m\]$(parse_git_branch)\[\e[1;33m\]$(parse_git_status) \[\e[0;$(location_privileges)m\]\W\[\e[0;92m\]  \[\e[0m\]' # »
+        PS1='\[\e[0;1;31m\]$(parse_git_branch)\[\e[1;33m\]$(parse_git_status) \[\e[0;$(location_privileges)m\]\W\[\e[0;92m\]  \[\e[0m\]'
     fi
+}
+
+# fast cc
+# gcc -o file{,.c} && ./file
+fcc () {
+    if [ 1 != "$#" ] || [ ! -f "$1" ]; then
+        echo "fcc: usage: fcc file.c"
+        return 1
+    fi
+    gcc -o "${1%.c}" "$1" && ./"${1%.c}"
 }
 
 # swap
@@ -42,6 +52,7 @@ swap() {
     tmp_file="$(mktemp /tmp/numen.swap.XXXXXX)"
     mv "$1" "$tmp_file" && mv "$2" "$1" && mv "$tmp_file" "$2"
 }
+
 # extract - from https://gitlab.com/dwt1/dotfiles/-/blob/master/.bashrc
 extract() {
     if [ -z "$1" ]; then
@@ -84,6 +95,8 @@ N_PLACES=""
 N_PLACES="$(find "$HOME/.local/suckless" -maxdepth 1 -type d)\n$N_PLACES"
 N_PLACES="$(find "$HOME/stuff/code" -maxdepth 1 -type d)\n$N_PLACES"
 N_PLACES="$(find "$HOME/stuff/uni" -maxdepth 1 -type d)\n$N_PLACES"
+# N_PLACES="$(find "$HOME/stuff/code/ape_tools" -maxdepth 1 -type d)\n$N_PLACES"
+N_PLACES="$HOME/stuff/code/ape_tools\n$N_PLACES"
 N_PLACES="$HOME/stuff/code/os/deer\n$N_PLACES"
 N_PLACES="$HOME/stuff/uni/as/chess_committee\n$N_PLACES"
 N_PLACES="$HOME/.config\n$N_PLACES"
@@ -152,6 +165,7 @@ bash_shortcut_gen() {
 
     (herbe ".bash_functions" "shortcut file updated" &> /dev/null &)
 }
+
 ###############################################################################
 # update shortcuts
 [ "$HOME/.config/bash/bash_functions" -nt "$HOME/.config/bash/bash_shortcuts" ] \

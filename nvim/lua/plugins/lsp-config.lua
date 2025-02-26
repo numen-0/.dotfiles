@@ -10,9 +10,9 @@ return {
                 "lua_ls",
                 "clangd",
                 "bashls",
-                -- "basedpyright",
+                "jdtls",
+                "pyright",
                 "biome",
-                "pylsp",
                 "cssls",
                 "html",
             },
@@ -23,43 +23,9 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
 
+            lspconfig.pyright.setup({})
             lspconfig.biome.setup({})
-            lspconfig.pylsp.setup({
-                settings = {
-                    pylsp = {
-                        plugins = {
-                            pycodestyle = {
-                                ignore = { 'W391' },
-                                maxLineLength = 80,
-                            },
-                        },
-                    },
-                },
-                filetypes = { "python" },
-                root_dir = lspconfig.util.root_pattern(".git", ".todo", "bob"),
-                single_file_support = false,
-            })
-
-            -- lspconfig.basedpyright.setup({
-            --     cmd = { "basedpyright-langserver", "--stdio" },
-            --     filetypes = { "python" },
-            --     root_dir = lspconfig.util.root_pattern(
-            --         vim.loop.cwd()
-            --     --     '.git',
-            --     --     'bob'
-            --     ),
-            --     single_file_support = false,
-            --     settings = {
-            --         basedpyright = {
-            --             analysis = {
-            --                 autoSearchPaths = true,
-            --                 diagnosticMode = "openFilesOnly",
-            --                 useLibraryCodeForTypes = true
-            --             },
-            --         },
-            --     },
-            -- })
-
+            lspconfig.jdtls.setup({})
             lspconfig.cssls.setup({})
             lspconfig.html.setup({})
             lspconfig.lua_ls.setup({
@@ -133,7 +99,7 @@ return {
                     --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
                     -- end, opts)
                     kset('n', '<space>D', vim.lsp.buf.type_definition, opts)
-                    kset('n', '<space>rn', vim.lsp.buf.rename, opts)
+                    -- kset('n', '<space>rn', vim.lsp.buf.rename, opts)
                     kset({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
                     kset('n', 'gr', vim.lsp.buf.references, opts)
                     kset('n', '<space>gf', function()

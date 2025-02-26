@@ -1,4 +1,4 @@
-require("luasnip.session.snippet_collection").clear_snippets("c")
+-- require("luasnip.session.snippet_collection").clear_snippets("c")
 
 local ls     = require("luasnip")
 

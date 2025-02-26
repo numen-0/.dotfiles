@@ -3,7 +3,9 @@
 #   https://git.disroot.org/root_informatica/others/src/branch/master/qr.sh
 # convert url to qr-code
 
-[ "$1" ] || printf "usage: qr <url>"
+set -eu
+
+[ -z "${1:-}" ] && printf "usage: qr <url>" && exit 1
 
 curl "qrenco.de/$1"
 

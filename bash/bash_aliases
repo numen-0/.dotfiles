@@ -1,26 +1,47 @@
 # history | awk '{cmd[$2]++} END {for(elem in cmd) {print cmd[elem] " " elem}}' | sort -n -r | head -10
 
 alias _='clear'
-alias __='clear &&'
 alias .-='cd -'
 alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
 alias bob='./bob'
+alias venv='. venv/bin/activate'
 
 alias ls='ls -A --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color'
 
-alias cpv='cp -vi'
-alias mkdirv='mkdir -vp'
-alias mvv='mv -vi'
+# alias cpv='cp -vi'
+# alias mkdirv='mkdir -vp'
+# alias mvv='mv -vi'
 
-alias suffle='sort -R'
-alias cman='man "$(apropos -s 2 . | fzf --tiebreak=begin --border=none | sed "s|\s(\([0-9]\)).*|.\1|")"'
-alias redo='eval "$(history | tail -n 250 | sed "s/\s*[0-9]\+.\s*//" | awk "!seen[\$0]++" | fzf --tiebreak="begin,length" --border=rounded --tac)"'
+# alias cman='man "$(apropos -s 2 . | fzf --tiebreak=begin --border=none | sed "s|\s(\([0-9]\)).*|.\1|")"'
+# alias redo='eval "$(history | tail -n 250 | sed "s/\s*[0-9]\+.\s*//" | awk "!seen[\$0]++" | fzf --tiebreak="begin,length" --border=rounded --tac)"'
 
 alias peek='feh -d -S filename -.'
 alias copy='xclip -selection clipboard'
 alias clipboard='xclip -o | xclip -selection clipboard'
 
+
+
+
+# from: https://gist.github.com/mwhite/6887990
+alias galias='alias | grep -E "^alias g[^=]*=.git " | sed "s|^alias\s*\([^=]*\)=.\(git [^ ]*\).\+$|\1 > \2|"'
+alias gl='git log --oneline --graph --decorate --color'
+alias gll='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short'
+alias gbs="git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+alias ga='git add '
+alias gaa='git add .'
+alias gap='git add -p '
+# alias gc='git commit --verbose'
+# alias gca='git commit -a --verbose'
+alias gcm='git commit --verbose -m '
+# alias gcam='git commit -a -m'
+# alias gm='git commit --amend --verbose'
+alias gd='git diff'
+alias gds='git diff --stat'
+alias gdc='git diff --cached'
+alias gs='git status -sbuall'
+alias gsd='git status -s && git diff'
+alias gco='git checkout '
+alias gcob='git checkout -b '

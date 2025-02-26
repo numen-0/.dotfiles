@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()"
 head /dev/urandom | tr -dc "$characters" | head -c 64
 echo ""

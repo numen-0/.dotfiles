@@ -14,8 +14,13 @@ esac
 ###############################################################################
 ## path #######################################################################
 [ -d "$HOME/.local/bin" ]     && PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.local/scripts" ] && PATH="$HOME/.local/scripts:$PATH"
-[ -d "$HOME/.local/scripts/vim" ] && PATH="$HOME/.local/scripts/vim:$PATH"
+[ -d "$HOME/.local/scripts" ] && {
+    PATH="$HOME/.local/scripts:$PATH"
+    [ -d "$HOME/.local/scripts/vim" ] && \
+        PATH="$HOME/.local/scripts/vim:$PATH"
+    [ -d "$HOME/.local/scripts/private" ] && \
+       PATH="$HOME/.local/scripts/private:$PATH"
+}
 
 [ -f "$HOME/.config/bash/bash_functions" ] \
     && . "$HOME/.config/bash/bash_functions"
@@ -23,6 +28,9 @@ esac
     && . "$HOME/.config/bash/bash_aliases"
 [ -f "$HOME/.config/bash/bash_shortcuts" ] \
     && . "$HOME/.config/bash/bash_shortcuts"
+
+[ -f "$HOME/.config/user-dirs.dirs" ] \
+    && . "$HOME/.config/user-dirs.dirs"
 
 ###############################################################################
 ## config #####################################################################
@@ -38,6 +46,27 @@ export LC_ALL=en_US.UTF-8
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GREP_COLORS='ms=2;37'
 
+# export MANPAGER="nvim --clean +Man!"
+# export MANPAGER="nvim +Man!"
+export MANPAGER="less -R"
+true && { # [green]
+    export LESS_TERMCAP_mb=$'\e[1;35m'    # blink
+    export LESS_TERMCAP_md=$'\e[1;32m'    # bold
+    export LESS_TERMCAP_so=$'\e[1;30;42m' # standout
+    export LESS_TERMCAP_us=$'\e[1;92m'    # underline
+} || { # [orange]
+    export LESS_TERMCAP_mb=$'\e[1;35m'    # blink
+    export LESS_TERMCAP_md=$'\e[1;33m'    # bold
+    export LESS_TERMCAP_so=$'\e[1;30;43m' # standout
+    export LESS_TERMCAP_us=$'\e[1;95m'    # underline
+}
+export LESS_TERMCAP_me=$'\e[0m' # reset bold & blink
+export LESS_TERMCAP_se=$'\e[0m' # reset standout
+export LESS_TERMCAP_ue=$'\e[0m' # reset underline
+# thanks: https://unix.stackexchange.com/questions/119/colors-in-man-pages
+export GROFF_NO_SGR=1 # For Konsole and Gnome-terminal
+
+# bash
 if [ -n "$BASH_VERSION" ]; then
     # completion
     complete -cf man sudo which tldr
@@ -67,7 +96,6 @@ fi
 
 # set
 # set -o vi
-# set -o verbose
 
 # bind
 bind "set completion-ignore-case on"
@@ -76,7 +104,7 @@ bind '"\C-g":"fg\n"'
 # hist
 HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=2000
-# HISTFILESIZE=2000
+HISTFILESIZE=2000
 
 # $home clean
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -89,17 +117,18 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export MINIKUBE_HOME="$XDG_DATA_HOME/minikube"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 alias wget='wget --hsts-file $XDG_DATA_HOME/.wget-hsts'
 export HISTFILE="$HOME/.config/bash/bash_history"
 export LESSHISTFILE="/dev/null"
 # export YDOTOOL_SOCKET="/tmp/.ydotool_socket"
 
-# PS1 && term_name from ~/.config/bash/.bash_functions
-# PS1='\[\e[0;92m\] \[\e[0m\]'
+# PS1 && term_name from ~/.config/bash/bash_functions
+# PS1=' ' || '(branch) dir  '
 toggle
 change_term_name "(⌐■_■)"
 

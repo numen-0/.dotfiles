@@ -5,6 +5,7 @@ conf.:
 [_] snips
     [_] bash
 plugs:
+[_] zenmode is ugly
 [_] lumberjack
 [_] text emoji (u.u)
 [_] scratch (global/local scratch files)

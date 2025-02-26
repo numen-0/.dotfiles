@@ -1,10 +1,9 @@
-local group = vim.api.nvim_create_augroup("Themes_cmds", { clear = true })
+local group = vim.api.nvim_create_augroup("ThemesAutoCmds", { clear = true })
 return {
     {
         "judah-caruso/film-noir",
         lazy = true,
         name = "film_noir",
-        event = "VeryLazy",
         priority = 1000,
         init = function()
             vim.g.film_noir_color = "green"
@@ -63,8 +62,9 @@ return {
             })
         end,
     },
+    { "rose-pine/neovim", name = "rose-pine" },
     {
-        dir = "~/stuff/code/leun",
+        dir = "~/stuff/code/leun.nvim",
         lazy = false,
         name = "leun",
         dependencies = { "rktjmp/lush.nvim" },

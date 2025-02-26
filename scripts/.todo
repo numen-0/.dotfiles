@@ -2,4 +2,4 @@
  ┃ ┃ ┃┃ ┃┃ ┃
  ┻ ┗━┛┻━┛┗━┛
 add:
-[_] set -eu
+[_] set -eu # grep -FL "set -eu" $(find . -type f)
